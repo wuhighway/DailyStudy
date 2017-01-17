@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_view_flipper_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ViewFlipper
+        android:id="@+id/viewflipper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:flipInterval="3000"
+        android:inAnimation="@anim/anim_marquee_in"
+        android:outAnimation="@anim/anim_marquee_out"
+        android:paddingLeft="30dp" />
+
+</RelativeLayout>
