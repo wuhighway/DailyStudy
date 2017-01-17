@@ -14,6 +14,6 @@
         android:flipInterval="3000"
         android:inAnimation="@anim/anim_marquee_in"
         android:outAnimation="@anim/anim_marquee_out"
-        android:paddingLeft="30dp" />
+        android:paddingLeft="10dp" />
 
 </RelativeLayout>
