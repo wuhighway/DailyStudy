@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.highway.study.takephoto.TakePhotoActivity;
 import com.highway.study.ui.viewflipper.ViewFlipperTestActivity;
+import com.highway.study.ui.viewflipper.datepicker.DatePickerActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.viewflipper).setOnClickListener(this);
         findViewById(R.id.takephoto).setOnClickListener(this);
+        findViewById(R.id.datepick).setOnClickListener(this);
     }
 
 
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.takephoto:
                 startActivity(new Intent(this, TakePhotoActivity.class));
+                break;
+            case R.id.datepick:
+                startActivity(new Intent(this, DatePickerActivity.class));
                 break;
         }
     }

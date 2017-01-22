@@ -16,4 +16,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/viewflipper"
         android:text="takephoto" />
+
+    <Button
+        android:id="@+id/datepick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/takephoto"
+        android:text="datepick" />
 </RelativeLayout>
