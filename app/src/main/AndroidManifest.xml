@@ -33,7 +33,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ui.viewflipper.datepicker.DatePickerActivity"></activity>
+        <activity android:name=".ui.viewflipper.datepicker.DatePickerActivity" />
+        <activity android:name=".coustomview.loadingview.CoustomActivity"></activity>
     </application>
 
 </manifest>

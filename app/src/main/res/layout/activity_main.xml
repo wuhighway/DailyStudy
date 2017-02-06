@@ -23,4 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/takephoto"
         android:text="datepick" />
+
+    <Button
+        android:id="@+id/coustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/takephoto"
+        android:text="coustom" />
+
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.highway.study.coustomview.loadingview.CoustomActivity;
 import com.highway.study.takephoto.TakePhotoActivity;
 import com.highway.study.ui.viewflipper.ViewFlipperTestActivity;
 import com.highway.study.ui.viewflipper.datepicker.DatePickerActivity;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.viewflipper).setOnClickListener(this);
         findViewById(R.id.takephoto).setOnClickListener(this);
         findViewById(R.id.datepick).setOnClickListener(this);
+        findViewById(R.id.coustom).setOnClickListener(this);
     }
 
 
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.datepick:
                 startActivity(new Intent(this, DatePickerActivity.class));
                 break;
+            case R.id.coustom:
+                startActivity(new Intent(this, CoustomActivity.class));
         }
     }
 }

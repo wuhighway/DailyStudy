@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.highway.study.R;
@@ -59,10 +60,17 @@ public class ViewFlipperTestActivity extends AppCompatActivity {
         bannerBeen.add(bean3);
 
         for (int i = 0; i < bannerBeen.size(); i++) {
+            final int pos = i;
             View view = LayoutInflater.from(this).inflate(R.layout.viewflipper_item, null);
             TextView title = (TextView) view.findViewById(R.id.tv_title);
             BannerBean bannerBean = bannerBeen.get(i);
             title.setText(bannerBean.getContent());
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(ViewFlipperTestActivity.this, "positon" + pos, Toast.LENGTH_LONG).show();
+                }
+            });
             flipper.addView(view);
         }
 
