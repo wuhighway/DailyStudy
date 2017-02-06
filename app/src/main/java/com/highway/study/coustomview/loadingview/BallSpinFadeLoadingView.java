@@ -19,6 +19,7 @@ import java.util.List;
 /**
  * Created by JH
  * on 2017/2/6.
+ * 加载动画
  */
 
 public class BallSpinFadeLoadingView extends View {

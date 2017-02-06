@@ -12,13 +12,11 @@ public class CoustomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coustom);
-        final BallPulseLoadingView view = (BallPulseLoadingView)findViewById(R.id.loading_view);
+        final Win8Search view = (Win8Search)findViewById(R.id.loading_view);
         findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (view.getVisibility() != View.VISIBLE) {
-                    view.setVisibility(View.VISIBLE);
-                }
+                view.startAnimation();
             }
         });
     }

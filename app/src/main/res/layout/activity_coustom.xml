@@ -21,10 +21,10 @@
         <!--custom:indicator_color="#123"-->
         <!--android:visibility="gone"-->
         <!--/>-->
-    <com.highway.study.coustomview.loadingview.BallPulseLoadingView
+    <com.highway.study.coustomview.loadingview.Win8Search
         android:id="@+id/loading_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerInParent="true"
         custom:indicator_color="#123"
         />
