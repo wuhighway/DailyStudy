@@ -5,30 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/viewflipper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="viewflipper" />
-    <Button
-        android:id="@+id/takephoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/viewflipper"
-        android:text="takephoto" />
-
-    <Button
-        android:id="@+id/datepick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/takephoto"
-        android:text="datepick" />
-
-    <Button
-        android:id="@+id/coustom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/takephoto"
-        android:text="coustom" />
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" />
 
 </RelativeLayout>

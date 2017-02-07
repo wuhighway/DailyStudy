@@ -34,7 +34,9 @@
         </provider>
 
         <activity android:name=".ui.viewflipper.datepicker.DatePickerActivity" />
-        <activity android:name=".coustomview.loadingview.CoustomActivity"></activity>
+        <activity android:name=".coustomview.loadingview.CoustomActivity" />
+        <activity android:name=".animation.AnimActivity" />
+        <activity android:name=".animation.ViewPropertyAnimatorActivity"></activity>
     </application>
 
 </manifest>
