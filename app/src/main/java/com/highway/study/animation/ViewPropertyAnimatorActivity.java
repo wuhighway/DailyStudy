@@ -56,5 +56,6 @@ public class ViewPropertyAnimatorActivity extends AppCompatActivity {
         propertyAnimator.setDuration(500l);
         propertyAnimator.setInterpolator(new LinearInterpolator());
         propertyAnimator.start();
+
     }
 }
