@@ -5,20 +5,20 @@ import android.content.Intent;
 import android.content.Context;
 import android.util.Log;
 
-public class UploadImgService extends IntentService {
+public class MyIntentService extends IntentService {
     private static final String ACTION_UPLOAD_IMG = "com.zhy.blogcodes.intentservice.action.UPLOAD_IMAGE";
     public static final String EXTRA_IMG_PATH = "com.zhy.blogcodes.intentservice.extra.IMG_PATH";
 
     public static void startUploadImg(Context context, String path) {
-        Intent intent = new Intent(context, UploadImgService.class);
+        Intent intent = new Intent(context, MyIntentService.class);
         intent.setAction(ACTION_UPLOAD_IMG);
         intent.putExtra(EXTRA_IMG_PATH, path);
         context.startService(intent);
     }
 
 
-    public UploadImgService() {
-        super("UploadImgService");
+    public MyIntentService() {
+        super("MyIntentService");
     }
 
     @Override
