@@ -1,4 +1,4 @@
-package com.highway.study.animation;
+package com.highway.study.anim;
 
 import android.content.Context;
 import android.content.res.TypedArray;

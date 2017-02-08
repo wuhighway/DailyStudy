@@ -1,4 +1,4 @@
-package com.highway.study.animation;
+package com.highway.study.anim;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;

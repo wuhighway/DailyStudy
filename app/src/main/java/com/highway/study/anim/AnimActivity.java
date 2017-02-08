@@ -1,4 +1,4 @@
-package com.highway.study.animation;
+package com.highway.study.anim;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
