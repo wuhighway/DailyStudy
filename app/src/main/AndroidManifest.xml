@@ -50,7 +50,10 @@
             android:name=".service.UploadImgService"
             android:exported="false" />
 
-        <activity android:name=".service.IntentServiceActivity"></activity>
+        <activity android:name=".service.IntentServiceActivity" />
+        <activity android:name=".shareelem.ShareTractionActivity" />
+        <activity android:name=".shareelem.ViewerActivity"
+            android:theme="@style/ViewerTheme"/>
     </application>
 
 </manifest>
