@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -36,7 +37,20 @@
         <activity android:name=".ui.viewflipper.datepicker.DatePickerActivity" />
         <activity android:name=".coustomview.loadingview.CoustomActivity" />
         <activity android:name=".animation.AnimActivity" />
-        <activity android:name=".animation.ViewPropertyAnimatorActivity"></activity>
+        <activity android:name=".animation.ViewPropertyAnimatorActivity" />
+
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".service.ServiceActivity" />
+
+        <service
+            android:name=".service.UploadImgService"
+            android:exported="false" />
+
+        <activity android:name=".service.IntentServiceActivity"></activity>
     </application>
 
 </manifest>

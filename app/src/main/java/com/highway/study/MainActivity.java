@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.highway.study.animation.AnimActivity;
 import com.highway.study.animation.DividerItemDecoration;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
+import com.highway.study.service.ServiceActivity;
 import com.highway.study.takephoto.TakePhotoActivity;
 import com.highway.study.ui.viewflipper.ViewFlipperTestActivity;
 import com.highway.study.ui.viewflipper.datepicker.DatePickerActivity;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                             intent = new Intent(MainActivity.this, AnimActivity.class);
                             break;
                         case 5:
+                            intent = new Intent(MainActivity.this, ServiceActivity.class);
                             break;
                         case 6:
                             break;

@@ -6,6 +6,7 @@
         <item>datepick</item>
         <item>coustom</item>
         <item>animate</item>
+        <item>service</item>
     </string-array>
 
     <string-array name="animation_apis">
