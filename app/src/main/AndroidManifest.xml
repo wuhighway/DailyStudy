@@ -36,8 +36,8 @@
 
         <activity android:name=".ui.viewflipper.datepicker.DatePickerActivity" />
         <activity android:name=".coustomview.loadingview.CoustomActivity" />
-        <activity android:name=".animation.AnimActivity" />
-        <activity android:name=".animation.ViewPropertyAnimatorActivity" />
+        <activity android:name=".anim.AnimActivity" />
+        <activity android:name=".anim.ViewPropertyAnimatorActivity" />
 
         <service
             android:name=".service.MyService"
@@ -47,13 +47,19 @@
         <activity android:name=".service.ServiceActivity" />
 
         <service
-            android:name=".service.UploadImgService"
+            android:name=".service.MyIntentService"
             android:exported="false" />
 
         <activity android:name=".service.IntentServiceActivity" />
         <activity android:name=".shareelem.ShareTractionActivity" />
-        <activity android:name=".shareelem.ViewerActivity"
-            android:theme="@style/ViewerTheme"/>
+        <activity
+            android:name=".shareelem.ViewerActivity"
+            android:theme="@style/ViewerTheme" />
+
+        <service
+            android:name=".service.DownloadService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

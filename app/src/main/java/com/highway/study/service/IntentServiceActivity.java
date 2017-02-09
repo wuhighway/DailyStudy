@@ -23,7 +23,7 @@ public class IntentServiceActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() == UPLOAD_RESULT) {
-                String path = intent.getStringExtra(UploadImgService.EXTRA_IMG_PATH);
+                String path = intent.getStringExtra(MyIntentService.EXTRA_IMG_PATH);
                 handleResult(path);
             }
 
@@ -57,7 +57,7 @@ public class IntentServiceActivity extends AppCompatActivity {
     public void addTask(View view) {
         //模拟路径
         String path = "/sdcard/imgs/" + (++i) + ".png";
-        UploadImgService.startUploadImg(this, path);
+        MyIntentService.startUploadImg(this, path);
 
         TextView tv = new TextView(this);
         mLyTaskContainer.addView(tv);

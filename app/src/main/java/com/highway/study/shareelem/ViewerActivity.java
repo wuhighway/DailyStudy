@@ -7,6 +7,7 @@ import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
 import android.transition.Slide;
 import android.view.Gravity;
 import android.view.View;
@@ -50,6 +51,9 @@ public class ViewerActivity extends AppCompatActivity {
         slide.addTarget(R.id.tv_text);
 
         getWindow().setEnterTransition(slide);
+//        Explode explode = new Explode();
+//        explode.addTarget(R.id.tv_text);
+//        getWindow().setEnterTransition(explode);
         ImageView imageView = (ImageView) findViewById(R.id.image);
         imageView.setImageResource(getIntent().getIntExtra("resId", R.mipmap.pic_1));
 
