@@ -36,8 +36,8 @@
 
         <activity android:name=".ui.viewflipper.datepicker.DatePickerActivity" />
         <activity android:name=".coustomview.loadingview.CoustomActivity" />
-        <activity android:name=".animation.AnimActivity" />
-        <activity android:name=".animation.ViewPropertyAnimatorActivity" />
+        <activity android:name=".anim.AnimActivity" />
+        <activity android:name=".anim.ViewPropertyAnimatorActivity" />
 
         <service
             android:name=".service.MyService"
