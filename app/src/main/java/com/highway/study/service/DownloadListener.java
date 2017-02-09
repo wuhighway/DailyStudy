@@ -3,6 +3,7 @@ package com.highway.study.service;
 /**
  * Created by highway
  * on 2017/2/8.
+ * 下载监听
  */
 
 public interface DownloadListener {

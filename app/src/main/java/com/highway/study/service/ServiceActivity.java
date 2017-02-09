@@ -62,4 +62,9 @@ public class ServiceActivity extends AppCompatActivity {
     public void startIntentService() {
         startActivity(new Intent(this, IntentServiceActivity.class));
     }
+
+    @OnClick(R.id.startdownload)
+    public void startDownload() {
+        startActivity(new Intent(this, DownloadServiceActivity.class));
+    }
 }

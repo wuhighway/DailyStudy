@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_download_service"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:max="100"
+        style="@android:style/Widget.ProgressBar.Horizontal"/>
+    <Button
+        android:id="@+id/start_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="startdown"/>
+
+    <Button
+        android:id="@+id/cancel_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cancel"/>
+    <Button
+        android:id="@+id/paused_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pause"/>
+
+</LinearLayout>

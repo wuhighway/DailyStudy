@@ -13,6 +13,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
+ * 异步下载任务
  * Created by highway
  * on 2017/2/8.
  */
@@ -22,9 +23,14 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
     public static final int TYPE_FAILED = 1;
     public static final int TYPE_PAUSED = 2;
     public static final int TYPE_CANCELED = 3;
+
+
     private DownloadListener listener;
+
     private boolean isCanceled = false;
+
     private boolean isPaused = false;
+
     private int lastProgress;
 
     public DownloadTask(DownloadListener listener) {
@@ -32,44 +38,50 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
     }
 
     @Override
-    protected Integer doInBackground(String... strings) {
+    protected Integer doInBackground(String... params) {
         InputStream is = null;
         RandomAccessFile savedFile = null;
-        File  file = null;
-        try{
-            long downloadLength = 0;
-            String url = strings[0];
-            String filename = url.substring(url.lastIndexOf("/"));
+        File file = null;
+        try {
+            long downloadedLength = 0; // 记录已下载的文件长度
+            String downloadUrl = params[0];
+            String fileName = downloadUrl.substring(downloadUrl.lastIndexOf("/"));
             String directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
-            file = new File(directory + filename);
+            file = new File(directory + fileName);
             if (file.exists()) {
-                downloadLength = file.length();
+                downloadedLength = file.length();
             }
-            long contentLength = getContentLength(url);
+            long contentLength = getContentLength(downloadUrl);
             if (contentLength == 0) {
                 return TYPE_FAILED;
-            } else if (contentLength == downloadLength) {
+            } else if (contentLength == downloadedLength) {
+                // 已下载字节和文件总字节相等，说明已经下载完成了
                 return TYPE_SUCCESS;
             }
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().addHeader("RANGE", "bytes=" + downloadLength + "-").url(url).build();
+            Request request = new Request.Builder()
+                    // 断点下载，指定从哪个字节开始下载
+                    .addHeader("RANGE", "bytes=" + downloadedLength + "-")
+                    .url(downloadUrl)
+                    .build();
             Response response = client.newCall(request).execute();
             if (response != null) {
                 is = response.body().byteStream();
                 savedFile = new RandomAccessFile(file, "rw");
-                savedFile.seek(downloadLength);
+                savedFile.seek(downloadedLength); // 跳过已下载的字节
                 byte[] b = new byte[1024];
                 int total = 0;
                 int len;
                 while ((len = is.read(b)) != -1) {
                     if (isCanceled) {
-                        return TYPE_FAILED;
-                    } else if (isPaused) {
+                        return TYPE_CANCELED;
+                    } else if(isPaused) {
                         return TYPE_PAUSED;
                     } else {
                         total += len;
                         savedFile.write(b, 0, len);
-                        int progress = (int) ((total + downloadLength) * 100 / contentLength);
+                        // 计算已下载的百分比
+                        int progress = (int) ((total + downloadedLength) * 100 / contentLength);
                         publishProgress(progress);
                     }
                 }
@@ -106,8 +118,8 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
     }
 
     @Override
-    protected void onPostExecute(Integer integer) {
-        switch (integer) {
+    protected void onPostExecute(Integer status) {
+        switch (status) {
             case TYPE_SUCCESS:
                 listener.onSuccess();
                 break;
@@ -119,6 +131,7 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
                 break;
             case TYPE_CANCELED:
                 listener.onCanceled();
+            default:
                 break;
         }
     }
@@ -127,13 +140,16 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
         isPaused = true;
     }
 
+
     public void cancelDownload() {
         isCanceled = true;
     }
 
-    private long getContentLength(String url) throws IOException {
+    private long getContentLength(String downloadUrl) throws IOException {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(url).build();
+        Request request = new Request.Builder()
+                .url(downloadUrl)
+                .build();
         Response response = client.newCall(request).execute();
         if (response != null && response.isSuccessful()) {
             long contentLength = response.body().contentLength();
