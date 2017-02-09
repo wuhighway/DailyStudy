@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
 
     <application
         android:allowBackup="true"
@@ -61,7 +63,29 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".service.DownloadServiceActivity"></activity>
+        <activity android:name=".service.DownloadServiceActivity" />
+
+        <!-- 监听网络状态 申请权限"android.permission.ACCESS_NETWORK_STATE" -->
+        <receiver
+            android:name=".receiver.NetBroadCasetreceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <!-- 监听播出电话 申请权限android.permission.PROCESS_OUTGOING_CALLS />-->
+        <receiver
+            android:name=".receiver.CallReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <!--定义接收的广播-->
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

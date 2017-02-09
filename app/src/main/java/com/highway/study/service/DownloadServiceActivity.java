@@ -13,9 +13,14 @@ import android.os.Message;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 import com.highway.study.R;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.ref.WeakReference;
 
@@ -28,6 +33,7 @@ import butterknife.OnClick;
  */
 public class DownloadServiceActivity extends AppCompatActivity {
 
+    private static final String TAG = "DownloadServiceActivity";
     public static final String UPDATE_ACTION = "update_progress_action";
     public static final String UPDATE_NAME = "progress";
     DownloadService.DownloadBinder binder;
@@ -46,6 +52,21 @@ public class DownloadServiceActivity extends AppCompatActivity {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void dealMessage(String progress){
+        Log.e(TAG, progress + ".........");
+        int pro = Integer.valueOf(progress);
+        progressBar.setProgress(pro);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(Cancel progress){
+        Log.e(TAG, "cancel" + ".....");
+        progressBar.setProgress(0);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +78,8 @@ public class DownloadServiceActivity extends AppCompatActivity {
         filter.addAction(UPDATE_ACTION);
         downReceiver = new DownReceiver();
         LocalBroadcastManager.getInstance(this).registerReceiver(downReceiver, filter);
+
+        EventBus.getDefault().register(this);
     }
 
     ServiceConnection connection = new ServiceConnection() {
@@ -110,7 +133,10 @@ public class DownloadServiceActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         // 取消注册
         LocalBroadcastManager.getInstance(this).unregisterReceiver(downReceiver);
+        EventBus.getDefault().unregister(this);
+
     }
 }

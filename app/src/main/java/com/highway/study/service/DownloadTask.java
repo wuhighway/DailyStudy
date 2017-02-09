@@ -145,6 +145,12 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
         isCanceled = true;
     }
 
+    /**
+     * 获取下载内容的大小
+     * @param downloadUrl
+     * @return
+     * @throws IOException
+     */
     private long getContentLength(String downloadUrl) throws IOException {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()

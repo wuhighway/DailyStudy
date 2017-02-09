@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.highway.study.MainActivity;
 import com.highway.study.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.File;
 
 /**
@@ -34,10 +36,12 @@ public class DownloadService extends Service {
         @Override
         public void onProgress(int progress) {
             getNotificationManager().notify(1, getNotification("Downloading...", progress));
-            Intent intent = new Intent();
-            intent.setAction(DownloadServiceActivity.UPDATE_ACTION);
-            intent.putExtra(DownloadServiceActivity.UPDATE_NAME, progress);
-            LocalBroadcastManager.getInstance(DownloadService.this).sendBroadcast(intent);
+//            Intent intent = new Intent();
+//            intent.setAction(DownloadServiceActivity.UPDATE_ACTION);
+//            intent.putExtra(DownloadServiceActivity.UPDATE_NAME, progress);
+//            LocalBroadcastManager.getInstance(DownloadService.this).sendBroadcast(intent);
+
+            EventBus.getDefault().post(progress + "");
 
         }
 
@@ -67,6 +71,7 @@ public class DownloadService extends Service {
 
         @Override
         public void onCanceled() {
+            EventBus.getDefault().post(new Cancel());
             downloadTask = null;
             stopForeground(true);
             Toast.makeText(DownloadService.this, "Canceled", Toast.LENGTH_SHORT).show();
