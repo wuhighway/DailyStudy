@@ -135,6 +135,7 @@ public class DownloadServiceActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         // 取消注册
+        unbindService(connection);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(downReceiver);
         EventBus.getDefault().unregister(this);
 

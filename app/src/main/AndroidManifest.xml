@@ -76,16 +76,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-        <!-- 监听播出电话 申请权限android.permission.PROCESS_OUTGOING_CALLS />-->
+        <!-- 监听播出电话 申请权限android.permission.PROCESS_OUTGOING_CALLS /> -->
         <receiver
             android:name=".receiver.CallReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <!--定义接收的广播-->
+
+                <!-- 定义接收的广播 -->
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".service.JobserviceActivity"></activity>
+
+        <service android:name=".service.MyJobservice"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>
