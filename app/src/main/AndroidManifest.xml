@@ -88,10 +88,13 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".service.JobserviceActivity"></activity>
+        <activity android:name=".service.JobserviceActivity" />
 
-        <service android:name=".service.MyJobservice"
+        <service
+            android:name=".service.MyJobservice"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity android:name=".sqlite.SQliteTestActivity"></activity>
     </application>
 
 </manifest>
