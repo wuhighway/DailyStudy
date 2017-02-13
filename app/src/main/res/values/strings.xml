@@ -9,6 +9,8 @@
         <item>service</item>
         <item>share element</item>
         <item>sqlite</item>
+        <item>keyboard</item>
+        <item>SpannableString</item>
     </string-array>
 
     <string-array name="animation_apis">

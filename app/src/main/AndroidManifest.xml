@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -94,7 +95,9 @@
             android:name=".service.MyJobservice"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <activity android:name=".sqlite.SQliteTestActivity"></activity>
+        <activity android:name=".sqlite.SQliteTestActivity" />
+        <activity android:name=".keyboard.KeyBoardActivity" />
+        <activity android:name=".spannablestring.SpannableStringActivity"></activity>
     </application>
 
 </manifest>
