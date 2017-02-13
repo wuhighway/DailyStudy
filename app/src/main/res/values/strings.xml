@@ -11,6 +11,7 @@
         <item>sqlite</item>
         <item>keyboard</item>
         <item>SpannableString</item>
+        <item>notification</item>
     </string-array>
 
     <string-array name="animation_apis">

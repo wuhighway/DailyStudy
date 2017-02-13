@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -97,7 +98,8 @@
 
         <activity android:name=".sqlite.SQliteTestActivity" />
         <activity android:name=".keyboard.KeyBoardActivity" />
-        <activity android:name=".spannablestring.SpannableStringActivity"></activity>
+        <activity android:name=".spannablestring.SpannableStringActivity" />
+        <activity android:name=".notification.NotificationActivity"></activity>
     </application>
 
 </manifest>

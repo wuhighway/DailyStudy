@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_take_photo"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="wrap_content"
@@ -11,4 +12,15 @@
         android:background="#fff"
         android:scrollbars="none"/>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/take_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="take photo"/>
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
