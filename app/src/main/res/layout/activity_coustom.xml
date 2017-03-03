@@ -28,10 +28,10 @@
         <!--android:layout_centerInParent="true"-->
         <!--custom:indicator_color="#123"-->
         <!--/>-->
-    <com.highway.study.coustomview.loadingview.PieView
-        android:id="@+id/pieView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true"/>
+    <com.highway.study.coustomview.loadingview.LeafLoadingView
+        android:id="@+id/loading"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
