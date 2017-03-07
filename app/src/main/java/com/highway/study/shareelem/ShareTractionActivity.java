@@ -38,13 +38,6 @@ public class ShareTractionActivity extends AppCompatActivity {
 
 
     private void launch(AppCompatActivity activity, View transitionView, int resId) {
-//        Intent intent = new Intent(activity, ViewerActivity.class);
-//
-//
-//        ActivityOptionsCompat options = ActivityOptionsCompat
-//                .makeSceneTransitionAnimation(activity, transitionView, "image");
-//
-//        ActivityCompat.startActivity(activity, intent, options.toBundle());
 
 
         Pair squareParticipant = new Pair<>(transitionView, ViewCompat.getTransitionName(transitionView));

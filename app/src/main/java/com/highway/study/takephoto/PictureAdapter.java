@@ -39,6 +39,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHelp
 
     @Override
     public void onBindViewHolder(ViewHelper holder, final int position) {
+            holder.getAdapterPosition();
         if (pictures.get(position).getUrl().equals("default")) {
             holder.imgContent.setImageResource(R.mipmap.bg_img_up);
             holder.imgDel.setVisibility(View.GONE);

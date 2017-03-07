@@ -21,12 +21,17 @@
         <!--custom:indicator_color="#123"-->
         <!--android:visibility="gone"-->
         <!--/>-->
-    <com.highway.study.coustomview.loadingview.Win8Search
-        android:id="@+id/loading_view"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <!--<com.highway.study.coustomview.loadingview.Win8Search-->
+        <!--android:id="@+id/loading_view"-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="150dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--custom:indicator_color="#123"-->
+        <!--/>-->
+    <com.highway.study.coustomview.loadingview.LeafLoadingView
+        android:id="@+id/loading"
         android:layout_centerInParent="true"
-        custom:indicator_color="#123"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
