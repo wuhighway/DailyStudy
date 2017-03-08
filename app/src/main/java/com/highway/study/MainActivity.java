@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
@@ -79,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 9:
                             intent = new Intent(MainActivity.this, SpannableStringActivity.class);
+                            break;
+                        case 10:
+                            intent = new Intent(MainActivity.this, RetrofitActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

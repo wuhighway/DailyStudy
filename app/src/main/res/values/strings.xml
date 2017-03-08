@@ -11,6 +11,7 @@
         <item>sqlite</item>
         <item>keyboard</item>
         <item>SpannableString</item>
+        <item>retrofit</item>
     </string-array>
 
     <string-array name="animation_apis">
@@ -24,4 +25,9 @@
         <item>Shared Element Transitions</item>
         <item>Animated Vector Drawables</item>
     </string-array>
+
+    <string name="city">城市:</string>
+    <string name="wd">\n风向:</string>
+    <string name="ws">\n风级:</string>
+    <string name="time">\n发布时间:</string>
 </resources>

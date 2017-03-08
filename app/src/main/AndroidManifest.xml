@@ -97,7 +97,8 @@
 
         <activity android:name=".sqlite.SQliteTestActivity" />
         <activity android:name=".keyboard.KeyBoardActivity" />
-        <activity android:name=".spannablestring.SpannableStringActivity"></activity>
+        <activity android:name=".spannablestring.SpannableStringActivity" />
+        <activity android:name=".Retrofit.RetrofitActivity"></activity>
     </application>
 
 </manifest>
