@@ -12,6 +12,7 @@
         <item>keyboard</item>
         <item>SpannableString</item>
         <item>retrofit</item>
+        <item>shake</item>
     </string-array>
 
     <string-array name="animation_apis">

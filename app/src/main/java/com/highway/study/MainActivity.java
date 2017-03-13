@@ -11,6 +11,7 @@ import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
+import com.highway.study.hardware.ShakeActivity;
 import com.highway.study.keyboard.KeyBoardActivity;
 import com.highway.study.service.ServiceActivity;
 import com.highway.study.shareelem.ShareTractionActivity;
@@ -83,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 10:
                             intent = new Intent(MainActivity.this, RetrofitActivity.class);
+                            break;
+                        case 11:
+                            intent = new Intent(MainActivity.this, ShakeActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);
