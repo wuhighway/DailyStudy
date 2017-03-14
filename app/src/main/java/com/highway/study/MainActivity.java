@@ -13,6 +13,7 @@ import com.highway.study.anim.DividerItemDecoration;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
 import com.highway.study.hardware.ShakeActivity;
 import com.highway.study.keyboard.KeyBoardActivity;
+import com.highway.study.rxjava.RxJavaActivity;
 import com.highway.study.service.ServiceActivity;
 import com.highway.study.shareelem.ShareTractionActivity;
 import com.highway.study.spannablestring.SpannableStringActivity;
@@ -87,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 11:
                             intent = new Intent(MainActivity.this, ShakeActivity.class);
+                            break;
+                        case 12:
+                            intent = new Intent(MainActivity.this, RxJavaActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

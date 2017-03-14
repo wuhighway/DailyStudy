@@ -100,7 +100,8 @@
         <activity android:name=".keyboard.KeyBoardActivity" />
         <activity android:name=".spannablestring.SpannableStringActivity" />
         <activity android:name=".Retrofit.RetrofitActivity" />
-        <activity android:name=".hardware.ShakeActivity"></activity>
+        <activity android:name=".hardware.ShakeActivity" />
+        <activity android:name=".rxjava.RxJavaActivity"></activity>
     </application>
 
 </manifest>
