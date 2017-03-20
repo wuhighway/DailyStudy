@@ -101,7 +101,8 @@
         <activity android:name=".spannablestring.SpannableStringActivity" />
         <activity android:name=".Retrofit.RetrofitActivity" />
         <activity android:name=".hardware.ShakeActivity" />
-        <activity android:name=".rxjava.RxJavaActivity"></activity>
+        <activity android:name=".rxjava.RxJavaActivity" />
+        <activity android:name=".cutdowntimer.CountdownTimerActivity"></activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
+import com.highway.study.cutdowntimer.CountdownTimerActivity;
 import com.highway.study.hardware.ShakeActivity;
 import com.highway.study.keyboard.KeyBoardActivity;
 import com.highway.study.rxjava.RxJavaActivity;
@@ -91,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 12:
                             intent = new Intent(MainActivity.this, RxJavaActivity.class);
+                            break;
+                        case 13:
+                            intent = new Intent(MainActivity.this, CountdownTimerActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);
