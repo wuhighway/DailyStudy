@@ -18,6 +18,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
 
 import com.highway.study.R;
+import com.highway.study.scanphotos.animations.DepthPageTransformer;
 import com.highway.study.widget.HackyViewPager;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class ScanImageviewActivity extends AppCompatActivity {
 //                });
         initData();
         mViewPager = (HackyViewPager) findViewById(R.id.photos_pager);
-
+        mViewPager.setPageTransformer(true, new DepthPageTransformer());
         adapter = new ImagePagerAdapter(getSupportFragmentManager(), integers);
         mViewPager.setAdapter(adapter);
 
