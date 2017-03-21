@@ -15,6 +15,7 @@
         <item>shake</item>
         <item>rxjava</item>
         <item>CountDownTimer</item>
+        <item>ScanImage</item>
     </string-array>
 
     <string-array name="animation_apis">
@@ -33,4 +34,7 @@
     <string name="wd">\n风向:</string>
     <string name="ws">\n风级:</string>
     <string name="time">\n发布时间:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

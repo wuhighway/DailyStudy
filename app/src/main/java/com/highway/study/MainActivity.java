@@ -15,6 +15,7 @@ import com.highway.study.cutdowntimer.CountdownTimerActivity;
 import com.highway.study.hardware.ShakeActivity;
 import com.highway.study.keyboard.KeyBoardActivity;
 import com.highway.study.rxjava.RxJavaActivity;
+import com.highway.study.scanphotos.ScanImageviewActivity;
 import com.highway.study.service.ServiceActivity;
 import com.highway.study.shareelem.ShareTractionActivity;
 import com.highway.study.spannablestring.SpannableStringActivity;
@@ -95,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 13:
                             intent = new Intent(MainActivity.this, CountdownTimerActivity.class);
+                            break;
+                        case 14:
+                            intent = new Intent(MainActivity.this, ScanImageviewActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

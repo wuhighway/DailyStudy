@@ -102,7 +102,10 @@
         <activity android:name=".Retrofit.RetrofitActivity" />
         <activity android:name=".hardware.ShakeActivity" />
         <activity android:name=".rxjava.RxJavaActivity" />
-        <activity android:name=".cutdowntimer.CountdownTimerActivity"></activity>
+        <activity android:name=".cutdowntimer.CountdownTimerActivity" />
+        <activity android:name=".scanphotos.ScanImageviewActivity">
+            <!--android:theme="@style/Theme.AppCompat.NoActionBar">-->
+        </activity>
     </application>
 
 </manifest>
