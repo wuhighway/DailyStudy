@@ -22,6 +22,9 @@ import com.highway.study.widget.HackyViewPager;
 
 import java.util.ArrayList;
 
+/**
+ * 浏览图片，photoview
+ */
 public class ScanImageviewActivity extends AppCompatActivity {
     private HackyViewPager mViewPager;
     ImagePagerAdapter adapter;
