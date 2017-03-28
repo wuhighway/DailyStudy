@@ -104,8 +104,10 @@
         <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".cutdowntimer.CountdownTimerActivity" />
         <activity android:name=".scanphotos.ScanImageviewActivity">
-            <!--android:theme="@style/Theme.AppCompat.NoActionBar">-->
+
+            <!-- android:theme="@style/Theme.AppCompat.NoActionBar"> -->
         </activity>
+        <activity android:name=".customedittext.SecurityActivity"></activity>
     </application>
 
 </manifest>

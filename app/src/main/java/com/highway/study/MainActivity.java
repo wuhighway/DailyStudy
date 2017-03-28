@@ -11,6 +11,7 @@ import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
+import com.highway.study.customedittext.SecurityActivity;
 import com.highway.study.cutdowntimer.CountdownTimerActivity;
 import com.highway.study.hardware.ShakeActivity;
 import com.highway.study.keyboard.KeyBoardActivity;
@@ -99,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 14:
                             intent = new Intent(MainActivity.this, ScanImageviewActivity.class);
+                            break;
+                        case 15:
+                            intent = new Intent(MainActivity.this, SecurityActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

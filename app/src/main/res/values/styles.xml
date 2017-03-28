@@ -37,4 +37,14 @@
         <item name="theme">@style/MyToolbarTheme</item>
 
     </style>
+
+    <style name="text_editStyle" >
+        <item name="android:layout_height">47dp</item>
+        <item name="android:layout_width">47dp</item>
+        <item name="android:background">@mipmap/bg_verify</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/common_blue_0090FF</item>
+        <item name="android:textSize">18sp</item>
+
+    </style>
 </resources>
