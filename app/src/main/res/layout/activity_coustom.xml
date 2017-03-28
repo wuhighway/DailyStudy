@@ -13,10 +13,10 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:text="start"/>-->
 
-    <com.highway.study.coustomview.loadingview.AutoFitTextView
+    <com.highway.study.coustomview.loadingview.CoustomToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="string string string string  string string string string string string string string string string string"/>
+        android:layout_centerInParent="true"/>
 
     <!--<com.highway.study.coustomview.loadingview.BallSpinFadeLoadingView-->
         <!--android:id="@+id/loading_view"-->
