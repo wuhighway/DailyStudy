@@ -107,7 +107,8 @@
 
             <!-- android:theme="@style/Theme.AppCompat.NoActionBar"> -->
         </activity>
-        <activity android:name=".customedittext.SecurityActivity"></activity>
+        <activity android:name=".customedittext.SecurityActivity" />
+        <activity android:name=".recyclerview.RecyclerViewActivity"></activity>
     </application>
 
 </manifest>

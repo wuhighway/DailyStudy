@@ -15,6 +15,7 @@ import com.highway.study.customedittext.SecurityActivity;
 import com.highway.study.cutdowntimer.CountdownTimerActivity;
 import com.highway.study.hardware.ShakeActivity;
 import com.highway.study.keyboard.KeyBoardActivity;
+import com.highway.study.recyclerview.RecyclerViewActivity;
 import com.highway.study.rxjava.RxJavaActivity;
 import com.highway.study.scanphotos.ScanImageviewActivity;
 import com.highway.study.service.ServiceActivity;
@@ -103,6 +104,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 15:
                             intent = new Intent(MainActivity.this, SecurityActivity.class);
+                            break;
+                        case 16:
+                            intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);
