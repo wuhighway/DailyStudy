@@ -135,7 +135,7 @@ public class CoustomViewPager extends ViewGroup {
         if (scroller.computeScrollOffset()) {
             float currx = scroller.getCurrX();
             scrollTo((int) currx, 0);
-            invalidate();// 调用该方法会调用 onDraw() computeScroll();
+            postInvalidate(); // 调用该方法会调用 onDraw() computeScroll();
         }
     }
 
