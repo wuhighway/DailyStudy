@@ -49,6 +49,34 @@ public class CoustomViewPager extends ViewGroup {
     private int currentIndex;
     float startX, currentX;
 
+    float stX, stY;
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        detector.onTouchEvent(ev);
+        boolean result = false;
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                stX = ev.getX();
+                stY = ev.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float endx = ev.getX();
+                float endy = ev.getY();
+                float distanceX = Math.abs(endx - stX);
+                float distanceY = Math.abs(endy - stY);
+
+                if (distanceX > distanceY && distanceX > 5) {
+                    result = true;
+                } else {
+                    scrollToPager(currentIndex);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+        }
+        return result;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         detector.onTouchEvent(event); // 将事件传递给手势识别
@@ -125,6 +153,15 @@ public class CoustomViewPager extends ViewGroup {
         for (int i = 0; i < getChildCount(); i++) {
             View childView = getChildAt(i);
             childView.layout(i * getWidth(), 0, (i + 1) * getWidth(), getHeight());
+        }
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        for (int i = 0; i < getChildCount(); i++) {
+            View view = getChildAt(i);
+            view.measure(widthMeasureSpec, heightMeasureSpec);
         }
     }
 }
