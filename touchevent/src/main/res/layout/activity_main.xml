@@ -1,13 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.dailystudy.touchevent.FatherView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.dailystudy.touchevent.TouchLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dailystudy.touchevent.MainActivity">
+    android:id="@+id/mll"
+    tools:context=".MainActivity" >
 
-    <com.dailystudy.touchevent.ChildView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <ListView
+        android:id="@+id/lv2"
+        android:scrollbars="none"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
-</com.dailystudy.touchevent.FatherView>
+    <ListView
+        android:id="@+id/lv1"
+        android:scrollbars="none"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <ListView
+        android:id="@+id/lv3"
+        android:scrollbars="none"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+</com.dailystudy.touchevent.TouchLinearLayout>
