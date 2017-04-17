@@ -3,7 +3,6 @@ package com.highway.study.ui.viewflipper.datepicker;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;

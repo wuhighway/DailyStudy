@@ -1,1 +1,1 @@
-include ':app', ':touchevent'
+include ':app', ':touchevent', ':recyclerviewdm'

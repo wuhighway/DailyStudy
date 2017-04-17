@@ -2,9 +2,7 @@ package com.highway.study.scanphotos;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
