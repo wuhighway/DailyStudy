@@ -9,7 +9,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,11 +66,15 @@ public class WxItemDecoration extends RecyclerView.ItemDecoration {
             if (pos > -1) {
                 if (pos == 0) {//等于0肯定要有title的
                     drawTitleArea(c, left, right, view, params, pos);
+//                    String tag = mDatas.get(pos).getTag();
+//                    drawInflat(c, parent, tag);
 
                 } else {//其他的通过判断
                     if (null != mDatas.get(pos).getTag() && !mDatas.get(pos).getTag().equals(mDatas.get(pos - 1).getTag())) {
                         //不为空 且跟前一个tag不一样了，说明是新的分类，也要title
                         drawTitleArea(c, left, right, view, params, pos);
+//                        String tag = mDatas.get(pos).getTag();
+//                        drawInflat(c, parent, tag);
                     }
                 }
             }
@@ -138,5 +145,42 @@ public class WxItemDecoration extends RecyclerView.ItemDecoration {
                 }
             }
         }
+    }
+
+    private void drawInflat(Canvas c, RecyclerView parent, String tag) {
+        TextView toDrawView = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.title_item, parent, false);
+        toDrawView.setText(tag);
+        int toDrawWidthSpec;//用于测量的widthMeasureSpec
+        int toDrawHeightSpec;//用于测量的heightMeasureSpec
+        //拿到复杂布局的LayoutParams，如果为空，就new一个。
+        // 后面需要根据这个lp 构建toDrawWidthSpec，toDrawHeightSpec
+        ViewGroup.LayoutParams lp = toDrawView.getLayoutParams();
+        if (lp == null) {
+            lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);//这里是根据复杂布局layout的width height，new一个Lp
+            toDrawView.setLayoutParams(lp);
+        }
+        if (lp.width == ViewGroup.LayoutParams.MATCH_PARENT) {
+            //如果是MATCH_PARENT，则用父控件能分配的最大宽度和EXACTLY构建MeasureSpec。
+            toDrawWidthSpec = View.MeasureSpec.makeMeasureSpec(parent.getWidth() - parent.getPaddingLeft() - parent.getPaddingRight(), View.MeasureSpec.EXACTLY);
+        } else if (lp.width == ViewGroup.LayoutParams.WRAP_CONTENT) {
+            //如果是WRAP_CONTENT，则用父控件能分配的最大宽度和AT_MOST构建MeasureSpec。
+            toDrawWidthSpec = View.MeasureSpec.makeMeasureSpec(parent.getWidth() - parent.getPaddingLeft() - parent.getPaddingRight(), View.MeasureSpec.AT_MOST);
+        } else {
+            //否则则是具体的宽度数值，则用这个宽度和EXACTLY构建MeasureSpec。
+            toDrawWidthSpec = View.MeasureSpec.makeMeasureSpec(lp.width, View.MeasureSpec.EXACTLY);
+        }
+        //高度同理
+        if (lp.height == ViewGroup.LayoutParams.MATCH_PARENT) {
+            toDrawHeightSpec = View.MeasureSpec.makeMeasureSpec(parent.getHeight() - parent.getPaddingTop() - parent.getPaddingBottom(), View.MeasureSpec.EXACTLY);
+        } else if (lp.height == ViewGroup.LayoutParams.WRAP_CONTENT) {
+            toDrawHeightSpec = View.MeasureSpec.makeMeasureSpec(parent.getHeight() - parent.getPaddingTop() - parent.getPaddingBottom(), View.MeasureSpec.AT_MOST);
+        } else {
+            toDrawHeightSpec = View.MeasureSpec.makeMeasureSpec(lp.width, View.MeasureSpec.EXACTLY);
+        }
+        //依次调用 measure,layout,draw方法，将复杂头部显示在屏幕上。
+        toDrawView.measure(toDrawWidthSpec, toDrawHeightSpec);
+        toDrawView.layout(parent.getPaddingLeft(), parent.getPaddingTop(),
+                parent.getPaddingLeft() + toDrawView.getMeasuredWidth(), parent.getPaddingTop() + toDrawView.getMeasuredHeight());
+        toDrawView.draw(c);
     }
 }
