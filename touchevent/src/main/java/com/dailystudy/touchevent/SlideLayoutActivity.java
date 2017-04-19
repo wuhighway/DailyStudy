@@ -74,15 +74,17 @@ public class SlideLayoutActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    SlideLayout slideLayout = (SlideLayout) v.getParent();
-                    slideLayout.closeMenu();
+//                    SlideLayout slideLayout = (SlideLayout) v.getParent();
+//                    slideLayout.closeMenu();
                     myBeans.remove(myBean);
+                    SwipeMenuLayout swipeMenuLayout = (SwipeMenuLayout) v.getParent();
+                    swipeMenuLayout.smoothClose();
                     notifyDataSetChanged();
                 }
             });
 
-            SlideLayout slideLayout = (SlideLayout) convertView;
-            slideLayout.setOnStateChangeListenter(new MyOnStateChangeListenter());
+//            SlideLayout slideLayout = (SlideLayout) convertView;
+//            slideLayout.setOnStateChangeListenter(new MyOnStateChangeListenter());
 
             return convertView;
         }
