@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -108,7 +109,8 @@
             <!-- android:theme="@style/Theme.AppCompat.NoActionBar"> -->
         </activity>
         <activity android:name=".customedittext.SecurityActivity" />
-        <activity android:name=".recyclerview.RecyclerViewActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerViewActivity" />
+        <activity android:name=".javaandh5.JavaAndH5Activity"></activity>
     </application>
 
 </manifest>

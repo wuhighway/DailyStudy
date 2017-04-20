@@ -14,6 +14,7 @@ import com.highway.study.coustomview.loadingview.CoustomActivity;
 import com.highway.study.customedittext.SecurityActivity;
 import com.highway.study.cutdowntimer.CountdownTimerActivity;
 import com.highway.study.hardware.ShakeActivity;
+import com.highway.study.javaandh5.JavaAndH5Activity;
 import com.highway.study.keyboard.KeyBoardActivity;
 import com.highway.study.recyclerview.RecyclerViewActivity;
 import com.highway.study.rxjava.RxJavaActivity;
@@ -45,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         String[] apiArray = getResources().getStringArray(R.array.title);
-        TitleAdapter titleAdapter =
-                new TitleAdapter(apiArray, onRecyclerItemClick);
+        TitleAdapter titleAdapter = new TitleAdapter(apiArray, onRecyclerItemClick);
         recyclerView.setAdapter(titleAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, R.drawable.divider));
     }
@@ -107,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 16:
                             intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                            break;
+                        case 17:
+                            intent = new Intent(MainActivity.this, JavaAndH5Activity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

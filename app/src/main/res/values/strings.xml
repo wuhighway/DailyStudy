@@ -17,7 +17,8 @@
         <item>CountDownTimer</item> <!-- 倒计时-->
         <item>ScanImage</item> <!-- 浏览图片-->
         <item>edittext</item> <!-- 自定义输入框-->
-        <item>recyclerview</item> <!-- 自定义输入框-->
+        <item>recyclerview</item> <!-- recyclerview-->
+        <item>h5</item> <!-- h5相关-->
     </string-array>
 
     <string-array name="animation_apis">
