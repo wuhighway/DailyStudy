@@ -59,7 +59,7 @@ public class JavaAndH5Activity extends AppCompatActivity implements View.OnClick
         webView.setWebViewClient(new WebViewClient());
         webView.addJavascriptInterface(new AndroidAndJsInterface(), "Android");
 //        webView.loadUrl("file:///android_asset/JavaAndJavaScriptCall.html");
-        webView.loadUrl("file:///android_asset/RealNetJSCallJavaActivity.htm");
+        webView.loadUrl("file:///android_asset/readmode.html");
     }
 
     @Override
@@ -98,7 +98,7 @@ public class JavaAndH5Activity extends AppCompatActivity implements View.OnClick
             webView.post(new Runnable() {
                 @Override
                 public void run() {
-                    String json = "[{\"name\":\"阿福\", \"phone\":\"18600012345\"}]";
+                    String json = "[{\"name\":\"siri\", \"phone\":\"18600012345\"}]";
                     // 调用JS中的方法
                     webView.loadUrl("javascript:show('" + json + "')");
                 }
@@ -125,5 +125,15 @@ public class JavaAndH5Activity extends AppCompatActivity implements View.OnClick
                 }
             });
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack(); // 返回上一次加载页面
+        } else {
+            finish();
+        }
+//        super.onBackPressed();
     }
 }
