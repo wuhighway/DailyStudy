@@ -1,29 +1,35 @@
-<com.dailystudy.touchevent.TouchLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/mll"
-    tools:context=".MainActivity" >
+    android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/lv2"
-        android:scrollbars="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    <com.dailystudy.touchevent.MyNestedScrollParent
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/lv1"
-        android:scrollbars="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
 
-    <ListView
-        android:id="@+id/lv3"
-        android:scrollbars="none"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f0f"
+            android:text="@string/topStr" />
 
-</com.dailystudy.touchevent.TouchLinearLayout>
+        <com.dailystudy.touchevent.MyNestedScrollChild
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contenttv"
+                android:textColor="#f0f" />
+        </com.dailystudy.touchevent.MyNestedScrollChild>
+    </com.dailystudy.touchevent.MyNestedScrollParent>
+</RelativeLayout>

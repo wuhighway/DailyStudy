@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
+import com.highway.study.coordinatorLayout.CoordinatorLayoutActivity;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
 import com.highway.study.customedittext.SecurityActivity;
 import com.highway.study.cutdowntimer.CountdownTimerActivity;
@@ -110,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 17:
                             intent = new Intent(MainActivity.this, JavaAndH5Activity.class);
+                            break;
+                        case 18:
+                            intent = new Intent(MainActivity.this, CoordinatorLayoutActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

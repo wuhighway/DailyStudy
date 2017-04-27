@@ -16,7 +16,7 @@ import com.highway.study.R;
  * 根据view的宽度自动调节字体的大小
  */
 
-public class AutoFitTextView extends TextView {
+public class AutoFitTextView extends android.support.v7.widget.AppCompatTextView {
 
     private static final String TAG = "AutoFitTextView";
     private static float DEFAULT_MIN_TEXT_SIZE = 15;
