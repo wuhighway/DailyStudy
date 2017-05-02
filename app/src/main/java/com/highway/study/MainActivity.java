@@ -11,6 +11,7 @@ import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
 import com.highway.study.coordinatorLayout.CoordinatorLayoutActivity;
+import com.highway.study.coordinatorLayout.TextViewActivity;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
 import com.highway.study.customedittext.SecurityActivity;
 import com.highway.study.cutdowntimer.CountdownTimerActivity;

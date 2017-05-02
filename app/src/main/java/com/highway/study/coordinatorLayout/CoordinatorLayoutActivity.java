@@ -1,8 +1,12 @@
 package com.highway.study.coordinatorLayout;
 
+import android.animation.ValueAnimator;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
@@ -11,7 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
@@ -23,6 +29,7 @@ import android.widget.TextView;
 import com.highway.study.R;
 
 public class CoordinatorLayoutActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +56,16 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
     private TextView bifen2;
     private TextView bifen3;
 
-    private AppBarLayout mAppBar;
-
-    private boolean isFirst;
-
     FrameLayout zhudui;
     FrameLayout kedui;
     FrameLayout bifenlayout;
     RelativeLayout bifen1layout;
+    RelativeLayout toolbarTitle;
 
+
+    private AppBarLayout mAppBar;
+
+    private boolean isFirst;
 
     private void initViews() {
         mIndicator = (SimpleViewPagerIndicator) findViewById(R.id.id_stickynavlayout_indicator);
@@ -74,8 +82,8 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
         mAppBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                scrollY(verticalOffset, appBarLayout.getTotalScrollRange());
-                Log.e(TAG, "onOffsetChanged: " + verticalOffset );
+//                scrollY(verticalOffset, appBarLayout.getTotalScrollRange());
+                Log.e(TAG, "onOffsetChanged: " + verticalOffset);
             }
         });
         zhudui = (FrameLayout) findViewById(R.id.zhudui);
@@ -83,6 +91,7 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
         bifenlayout = (FrameLayout) findViewById(R.id.bifenlayout);
         bifen1layout = (RelativeLayout) findViewById(R.id.bifen1layout);
 
+        toolbarTitle = (RelativeLayout) findViewById(R.id.toolbar_title);
 
     }
 
@@ -169,8 +178,6 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
         desY = location2[1] - location[1];
 
 
-
-
         int[] location1 = new int[2];
         int[] location4 = new int[2];
         textView1.getLocationOnScreen(location1);
@@ -220,9 +227,21 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
 
     public void scrollY(int scrolly, int topHight) {
         if (isFirst) {
-//            Log.e(TAG, "scrolly = " + scrolly);
-//            Log.e(TAG, "topHight = " + topHight);
+
             float pre = Math.abs(scrolly) * 1.0f / topHight;
+            if (pre == 1) {
+                toolbarTitle.setVisibility(View.VISIBLE);
+                bifen1layout.setVisibility(View.GONE);
+                textView.setVisibility(View.GONE);
+                textView.setVisibility(View.GONE);
+                textView1.setVisibility(View.GONE);
+            } else {
+                toolbarTitle.setVisibility(View.GONE);
+                bifen1layout.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                textView1.setVisibility(View.VISIBLE);
+            }
             textView.setTranslationY(desY * pre);
             textView.setTranslationX(desX * pre);
             textView.setScaleX((imageX - pre * scaleX) / imageX);
@@ -235,44 +254,19 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
 
             bifen1layout.setTranslationY(desY2 * pre);
             bifen1layout.setTranslationX(desX2 * pre);
-//        bifen1.setTextSize(textSize - pre * diSize);
-//            if (pre <= 0.3) {
+            if (pre <= 0.5) {
 
-//                float b = (float) (Math.round(pre * 100000000)) / 100000000;
-//                Log.e(TAG, "b = " + b + "................");
-//                bifen1.getPaint().setTextSize(textSize - 2 * b * diSize);
-//                bifen1.postInvalidate();
-            float size = lerp(textSize, textSize - diSize, pre);
-            Log.e(TAG, "lerp: " + size);
-                bifen1.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
-//                bifen1.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2 * Math.abs(scrolly) * diSize / topHight);
-                bifen2.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
-                bifen3.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
-//            bifen2.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2 * Math.abs(scrolly) * diSize / topHight);
-//                bifen3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2 * Math.abs(scrolly) * diSize / topHight);
-//                Log.e(TAG, "SIZE = " + (textSize - 2 * b * diSize));
-//            }
-//        bifen1.setTextScaleY((imageY2 - pre * scaleY2) / imageY2);
-//        bifen1.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - pre * diSize);
-//        bifen1.setText("100:100");
+//                float size = lerp(textSize, textSize - diSize, pre);
+//                Log.e(TAG, "lerp: " + size);
+//                textHelper.setExpansionFraction(pre);
+                bifen1.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2 * Math.abs(scrolly) * diSize / topHight);
+                bifen2.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2 * Math.abs(scrolly) * diSize / topHight);
+                bifen3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2 * Math.abs(scrolly) * diSize / topHight);
+
+            }
         } else {
             isFirst = true;
         }
-
     }
-
-
-    private static float lerp(float startValue, float endValue, float fraction) {
-//        if (interpolator != null) {
-            fraction = LINEAR_INTERPOLATOR.getInterpolation(fraction);
-//        }
-        return startValue + (fraction * (endValue - startValue));
-    }
-
-    static final Interpolator LINEAR_INTERPOLATOR = new LinearInterpolator();
-    static final Interpolator FAST_OUT_SLOW_IN_INTERPOLATOR = new FastOutSlowInInterpolator();
-    static final Interpolator FAST_OUT_LINEAR_IN_INTERPOLATOR = new FastOutLinearInInterpolator();
-    static final Interpolator LINEAR_OUT_SLOW_IN_INTERPOLATOR = new LinearOutSlowInInterpolator();
-    static final Interpolator DECELERATE_INTERPOLATOR = new DecelerateInterpolator();
 
 }

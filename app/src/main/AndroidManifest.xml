@@ -111,8 +111,10 @@
         <activity android:name=".customedittext.SecurityActivity" />
         <activity android:name=".recyclerview.RecyclerViewActivity" />
         <activity android:name=".javaandh5.JavaAndH5Activity" />
-        <activity android:name=".coordinatorLayout.CoordinatorLayoutActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".coordinatorLayout.CoordinatorLayoutActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".coordinatorLayout.TextViewActivity"></activity>
     </application>
 
 </manifest>
