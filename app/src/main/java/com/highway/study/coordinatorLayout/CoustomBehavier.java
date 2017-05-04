@@ -1,5 +1,6 @@
 package com.highway.study.coordinatorLayout;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -8,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -60,9 +62,11 @@ public class CoustomBehavier extends CoordinatorLayout.Behavior<FrameLayout> {
     float textSize;
     float diSize;
 
+    TextView text_zhudui;
+
 
     public CoustomBehavier(Context context, AttributeSet attrs) {
-        Log.e(TAG, "INIT");
+//        Log.e(TAG, "INIT");
     }
 
     @Override
@@ -91,6 +95,7 @@ public class CoustomBehavier extends CoordinatorLayout.Behavior<FrameLayout> {
         bifenlayout = (FrameLayout) parent.findViewById(R.id.bifenlayout);
         bifen1layout = (RelativeLayout) parent.findViewById(R.id.bifen1layout);
         toolbarTitle = (RelativeLayout) parent.findViewById(R.id.toolbar_title);
+        text_zhudui = (TextView) parent.findViewById(R.id.text_zhudui);
     }
 
     private void initPosition() {
@@ -125,7 +130,8 @@ public class CoustomBehavier extends CoordinatorLayout.Behavior<FrameLayout> {
         desY2 = location6[1] - location3[1];
         textSize = bifen1.getTextSize();
         diSize = textSize - bifen.getTextSize();
-        Log.e(TAG, "textsize = " + textSize);
+//        Log.e(TAG, "textsize = " + textSize);
+        preTextSize = textSize;
     }
 
     @Override
@@ -134,21 +140,24 @@ public class CoustomBehavier extends CoordinatorLayout.Behavior<FrameLayout> {
         if (isFirst) {
             initView(parent);
             initPosition();
-            isFirst = false;
             barLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
                 @Override
                 public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                    Log.e(TAG, "verticalOffset = " + verticalOffset);
+                    Log.e(TAG, "AppBarLayout = " + appBarLayout.getX());
                     scrollY(verticalOffset, appBarLayout.getTotalScrollRange());
                 }
             });
+            isFirst = false;
         }
         return true;
     }
 
+    private float preTextSize;
+
     public void scrollY(int scrolly, int topHight) {
         float pre = Math.abs(scrolly) * 1.0f / topHight;
-        Log.e(TAG, "pre = " + pre);
-        if (pre == 1) {
+        if (pre == 1.0f) {
             toolbarTitle.setVisibility(View.VISIBLE);
             bifen1layout.setVisibility(View.GONE);
             textView.setVisibility(View.GONE);
@@ -170,18 +179,29 @@ public class CoustomBehavier extends CoordinatorLayout.Behavior<FrameLayout> {
         textView1.setTranslationX(desX1 * pre);
         textView1.setScaleX((imageX1 - pre * scaleX1) / imageX1);
         textView1.setScaleY((imageY1 - pre * scaleY1) / imageY1);
-
         bifen1layout.setTranslationY(desY2 * pre);
         bifen1layout.setTranslationX(desX2 * pre);
-        if (pre <= 0.5) {
-            bifen1.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2*Math.abs(scrolly) * diSize / topHight);
-            bifen2.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2*Math.abs(scrolly) * diSize / topHight);
-            bifen3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2*Math.abs(scrolly) * diSize / topHight);
-            bifen.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - 2*Math.abs(scrolly) * diSize / topHight);
-            if (pre == 0.5) {
-                Log.e(TAG, "textsize = 0.5 " + (textSize - 2*Math.abs(scrolly) * diSize / topHight));
-            }
+        float doubleVale = pre * 4;
+        if (doubleVale > 1) {
+            doubleVale = 1;
         }
+        if (pre < 0.3) {
+            bifen1.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - doubleVale * diSize);
+            bifen2.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - doubleVale * diSize);
+            bifen3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - doubleVale * diSize);
+            bifen.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - doubleVale * diSize);
+        }
+
+        float va = 1 - pre * 3;
+        if (va < 0) {
+            va = 0;
+        }
+        text_zhudui.setAlpha(va);
+
+    }
+
+    public void setViewAlpah(View view, float alpha) {
+        view.setAlpha(alpha);
     }
 
     public float getDistance(int scale, View view, View view1) {

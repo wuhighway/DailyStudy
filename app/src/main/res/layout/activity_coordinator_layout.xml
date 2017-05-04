@@ -28,6 +28,17 @@
                     android:layout_height="60dp"
                     android:visibility="visible">
 
+                    <ImageButton
+                        android:id="@+id/pbp_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:padding="14dp"
+                        android:scaleType="fitCenter"
+                        android:background="#00ffffff"
+                        android:src="@drawable/commen_back_img" />
+
+
                     <FrameLayout
                         android:id="@+id/zhudui_title"
                         android:layout_width="50dp"
@@ -146,6 +157,16 @@
             android:layout_height="60dp"
             android:visibility="invisible">
 
+            <ImageButton
+                android:id="@+id/pbp_back1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:padding="14dp"
+                android:scaleType="fitCenter"
+                android:background="#00ffffff"
+                android:src="@drawable/commen_back_img" />
+
             <FrameLayout
                 android:id="@+id/zhudui"
                 android:layout_width="50dp"
@@ -252,6 +273,16 @@
                 android:layout_marginRight="30dp"
                 android:layout_toLeftOf="@+id/bifen1layout"
                 android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/text_zhudui"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textView"
+                android:layout_below="@+id/bifen1layout"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="主队" />
 
             <ImageView
                 android:id="@+id/textView1"

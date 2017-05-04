@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                             intent = new Intent(MainActivity.this, JavaAndH5Activity.class);
                             break;
                         case 18:
-                            intent = new Intent(MainActivity.this, CoordinatorLayoutActivity.class);
+                            intent = new Intent(MainActivity.this, TextViewActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

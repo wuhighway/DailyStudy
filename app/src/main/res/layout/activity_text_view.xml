@@ -40,6 +40,7 @@
                 android:gravity="center"
                 android:text="199:199"
                 android:textSize="18sp"
+                android:textColor="#fff"
                 android:textStyle="bold" />
         </FrameLayout>
 
@@ -63,7 +64,7 @@
         android:id="@id/id_stickynavlayout_topview"
         android:layout_width="match_parent"
         android:layout_height="256dp"
-        android:background="#4400ff00">
+        android:background="#000">
 
 
         <RelativeLayout
@@ -81,7 +82,8 @@
                 android:gravity="center"
                 android:text=":"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#fff"/>
             <TextView
                 android:id="@+id/bifen1"
                 android:layout_width="wrap_content"
@@ -91,7 +93,8 @@
                 android:gravity="center"
                 android:text="100"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#fff"/>
 
             <TextView
                 android:id="@+id/bifen3"
@@ -102,7 +105,8 @@
                 android:gravity="center"
                 android:text="100"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#fff"/>
         </RelativeLayout>
 
 
@@ -136,6 +140,7 @@
             android:background="#00000000">
 
             <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/CollapsingToolbarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="256dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -144,6 +149,8 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    app:navigationIcon="@drawable/commen_back_img"
+                    android:navigationIcon="@drawable/commen_back_img"
                     app:layout_collapseMode="pin">
 
                 </android.support.v7.widget.Toolbar>

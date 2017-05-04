@@ -13,6 +13,7 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -92,6 +93,10 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
         bifen1layout = (RelativeLayout) findViewById(R.id.bifen1layout);
 
         toolbarTitle = (RelativeLayout) findViewById(R.id.toolbar_title);
+
+//        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
