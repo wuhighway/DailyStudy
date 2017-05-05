@@ -2,6 +2,8 @@ package com.highway.study.coordinatorLayout;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
@@ -31,6 +33,7 @@ import android.widget.TextView;
 
 import com.highway.study.MainActivity;
 import com.highway.study.R;
+import com.highway.study.coordinatorLayout.view.MathchProgressView;
 
 public class TextViewActivity extends AppCompatActivity {
 
@@ -55,10 +58,10 @@ public class TextViewActivity extends AppCompatActivity {
             float pre = Math.abs(scrolly) * 1.0f / topHight;
             Log.e(TAG, "pre = " + pre);
             if (pre == 1.0f) {
-                status_match.setVisibility(View.VISIBLE);
-//                status_header_back.setVisibility(View.VISIBLE);
+//                status_match.setVisibility(View.VISIBLE);
+                status_header_back.setVisibility(View.VISIBLE);
             } else {
-//                status_header_back.setVisibility(View.GONE);
+                status_header_back.setVisibility(View.GONE);
                 status_match.setVisibility(View.GONE);
             }
             bifen_guest.setTranslationX(bifen_guest_X * pre);
@@ -86,15 +89,8 @@ public class TextViewActivity extends AppCompatActivity {
             image_guest.setAlpha(alpha);
             image_host.setAlpha(alpha);
 
-
-            float doubleVale = pre * 4;
-            if (doubleVale > 1) {
-                doubleVale = 1;
-            }
-            if (pre < 0.3) {
-                bifen_guest.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - doubleVale * textSizeDis);
-                bifen_host.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - doubleVale * textSizeDis);
-            }
+            bifen_guest.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - pre * textSizeDis);
+            bifen_host.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize - pre * textSizeDis);
 
         } else {
             isFirst = true;
@@ -175,7 +171,28 @@ public class TextViewActivity extends AppCompatActivity {
                 scrollY(verticalOffset, appBarLayout.getTotalScrollRange());
             }
         });
+
+        MathchProgressView = (MathchProgressView) findViewById(R.id.MathchProgressView);
+        MathchProgressView.setProgress(0);
+        handler.sendEmptyMessageDelayed(0, 1000);
     }
+
+    MathchProgressView MathchProgressView;
+    int progress = 0;
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (progress == 100) {
+                progress = 0;
+            }
+            progress += 2;
+            handler.sendEmptyMessageDelayed(0, 1000);
+            MathchProgressView.setProgress(progress);
+
+        }
+    };
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {

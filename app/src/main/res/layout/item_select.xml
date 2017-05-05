@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:coustom="http://schemas.android.com/apk/res-auto"
     xmlns:caiyi="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,44 +14,36 @@
         android:background="@drawable/pbpbb_bg"
         android:orientation="vertical">
 
-
-
-
-        <!--<RelativeLayout-->
-        <!--android:id="@+id/back_header"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="48dp">-->
-
-        <!---->
-        <!--</RelativeLayout>-->
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp">
+            android:layout_height="56dp">
 
-            <TextView
-                android:id="@+id/guest_name_back"
-                android:layout_width="92dp"
-                android:layout_height="22dp"
-                android:layout_centerInParent="true"
-                android:layout_toLeftOf="@+id/bifen_guest_back"
-                android:gravity="center"
-                android:text="上海上海上"
-                android:textColor="#fff"
-                android:textSize="15sp"
-                android:visibility="invisible"/>
-
-            <TextView
-                android:id="@+id/bifen_guest_back"
-                android:layout_width="35dp"
-                android:layout_height="48dp"
-                android:layout_centerInParent="true"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="-22dp"
                 android:layout_toLeftOf="@+id/status_header_back"
-                android:gravity="center"
-                android:text="299"
-                android:textColor="@color/colorAccent"
-                android:textSize="15sp"
-                android:visibility="invisible"/>
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/bifen_guest_back"
+                    android:layout_width="70dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center|right"
+                    android:gravity="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/guest_name_back"
+                    android:layout_width="110dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="45dp"
+                    android:gravity="center"
+                    android:textSize="14sp" />
+            </FrameLayout>
+
+
             <TextView
                 android:id="@+id/status_match"
                 android:layout_width="wrap_content"
@@ -60,6 +53,7 @@
                 android:text="取消"
                 android:textColor="#fff"
                 android:visibility="gone" />
+
             <TextView
                 android:id="@+id/status_header_back"
                 android:layout_width="wrap_content"
@@ -71,245 +65,189 @@
                 android:textSize="14sp"
                 android:visibility="invisible"/>
 
-            <TextView
-                android:id="@+id/bifen_host_back"
-                android:layout_width="35dp"
-                android:layout_height="48dp"
-                android:layout_centerInParent="true"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-22dp"
                 android:layout_toRightOf="@+id/status_header_back"
-                android:gravity="center"
-                android:text="299"
-                android:textColor="@color/colorAccent"
-                android:textSize="15sp"
-                android:visibility="invisible"/>
+                android:visibility="invisible"
+                >
 
-            <TextView
-                android:id="@+id/host_name_back"
-                android:layout_width="92dp"
-                android:layout_height="22dp"
-                android:layout_centerInParent="true"
-                android:layout_toRightOf="@+id/bifen_host_back"
-                android:gravity="center"
-                android:text="上海上海上"
-                android:textColor="#fff"
-                android:textSize="15sp"
-                android:visibility="invisible"/>
+                <TextView
+                    android:id="@+id/bifen_host_back"
+                    android:layout_width="70dp"
+                    android:layout_height="56dp"
+                    android:gravity="center"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/host_name_back"
+                    android:layout_width="110dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center|right"
+                    android:layout_marginLeft="45dp"
+                    android:gravity="center"
+                    android:textSize="14sp" />
+            </FrameLayout>
 
 
         </RelativeLayout>
-        <!--<RelativeLayout-->
-        <!--android:layout_below="@+id/layout_name"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="20dp"-->
-        <!--app:layout_collapseMode="parallax">-->
-
-        <!--<TextView-->
-        <!--android:id="@+id/tv_kedui"-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_marginLeft="40dp"-->
-        <!--android:gravity="top|center"-->
-        <!--android:text="联赛第一"-->
-        <!--android:textColor="#aaa"-->
-        <!--android:textSize="12dp" />-->
-
-        <!--<TextView-->
-        <!--android:id="@+id/tv_zhudui"-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginRight="40dp"-->
-        <!--android:gravity="top|center"-->
-        <!--android:text="主"-->
-        <!--android:textColor="#aaa"-->
-        <!--android:textSize="12dp" />-->
-        <!--</RelativeLayout>-->
 
         <TextView
             android:id="@+id/match_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/match_data"
+            android:layout_above="@+id/match_data_layout"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="2017-04-11 23:00"
-            android:textColor="#aaa"
-            android:textSize="12sp" />
+            android:textColor="#A8B2CF"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp"/>
 
-        <TextView
-            android:id="@+id/match_data"
+        <RelativeLayout
+            android:id="@+id/match_data_layout"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginTop="5dp"
-            android:gravity="center_horizontal|bottom"
-            android:text="取消"
-            android:textColor="#fff"
-            android:textSize="18sp" />
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/match_data"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:text="取消"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:visibility="invisible"/>
+            <com.highway.study.coordinatorLayout.view.MathchProgressView
+                android:id="@+id/MathchProgressView"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                coustom:max="100"
+                coustom:ringWidth="3dp"
+                coustom:style="STROKE"
+                coustom:textIsShow="true"
+                coustom:textSize="10sp"/>
+            <TextView
+                android:id="@+id/match_current_time"
+                android:layout_below="@+id/MathchProgressView"
+                android:layout_width="43dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:layout_marginTop="5dp"
+                android:textColor="#fff"
+                android:text="22'22"/>
+        </RelativeLayout>
+        
 
         <ImageView
             android:id="@+id/zhibo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/match_data"
+            android:layout_below="@+id/match_data_layout"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:src="@drawable/zhibo" />
 
-        <!--<RelativeLayout-->
-            <!--android:id="@+id/icon_bifen"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--&gt;-->
+        <TextView
+            android:id="@+id/bifen_guest"
+            android:layout_width="70dp"
+            android:layout_height="56dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="34dp"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="#FC5638"
+            android:textSize="40sp"
+            android:visibility="visible" />
 
-            <TextView
-                android:id="@+id/bifen_guest"
-                android:layout_width="35dp"
-                android:layout_height="48dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="44dp"
-                android:gravity="center"
-                android:text="299"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/image_guest"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="45dp"
+            android:src="@drawable/default_team_logo1"
+            android:visibility="invisible"
+             />
 
-            <ImageView
-                android:id="@+id/image_guest"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="44dp"
-                android:src="@drawable/default_team_logo1"
-                android:visibility="visible" />
+        <TextView
+            android:id="@+id/bifen_host"
+            android:layout_width="70dp"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="34dp"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#FC5638"
+            android:textSize="40sp"
+            android:visibility="visible" />
 
-            <TextView
-                android:id="@+id/bifen_host"
-                android:layout_width="35dp"
-                android:layout_height="48dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="44dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:text="299"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/image_host"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="45dp"
+            android:src="@drawable/default_team_logo1"
+            android:visibility="invisible" />
+        <TextView
+            android:id="@+id/guest_name"
+            android:layout_width="110dp"
+            android:layout_height="22dp"
+            android:layout_below="@+id/bifen_host"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:text="皇家马德里(客)"
+            android:textColor="#fff"
+            android:textSize="14sp" />
 
-            <ImageView
-                android:id="@+id/image_host"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:layout_marginRight="44dp"
-                android:src="@drawable/default_team_logo1"
-                android:visibility="visible" />
-        <!--</RelativeLayout>-->
-
-        <!--<RelativeLayout-->
-            <!--android:id="@+id/layout_name"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/icon_bifen"-->
-            <!--android:layout_marginTop="8dp">-->
-
-            <TextView
-                android:id="@+id/guest_name"
-                android:layout_width="92dp"
-                android:layout_height="22dp"
-                android:layout_marginLeft="19dp"
-
-                android:gravity="center"
-                android:text="上海上海上"
-                android:textColor="#fff"
-                android:textSize="15sp"
-                android:layout_below="@+id/bifen_host"/>
-
-            <TextView
-                android:id="@+id/tv_kedui"
-                android:layout_width="92dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/guest_name"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="k联赛排名第7"
-                android:textColor="#aaa"
-                android:textSize="12sp" />
-
-            <!--<TextView-->
-            <!--android:id="@+id/match_time"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:gravity="center"-->
-            <!--android:textColor="#aaa"-->
-            <!--android:textSize="12dp" />-->
-
-            <!--<TextView-->
-            <!--android:id="@+id/match_data"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:gravity="center_horizontal|bottom"-->
-            <!--android:textColor="#fff"-->
-            <!--android:textSize="24dp" />-->
-
-            <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:orientation="horizontal">-->
-
-            <!--<ImageView-->
-            <!--android:id="@+id/ongoingindicator"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:visibility="gone" />-->
-
-            <!--<TextView-->
-            <!--android:id="@+id/wanchang"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:textColor="#aaa"-->
-            <!--android:textSize="9dp" />-->
-            <!--</LinearLayout>-->
+        <TextView
+            android:id="@+id/tv_kedui"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/guest_name"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="k联赛排名第7"
+            android:textColor="#aaa"
+            android:textSize="10sp" />
 
 
-            <TextView
-                android:id="@+id/host_name"
-                android:layout_width="92dp"
-                android:layout_height="22dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="19dp"
-                android:gravity="center"
-                android:text="上海上海上"
-                android:textColor="#fff"
-                android:textSize="15sp"
-                android:layout_below="@+id/bifen_host"/>
+        <TextView
+            android:id="@+id/host_name"
+            android:layout_width="110dp"
+            android:layout_height="22dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/bifen_host"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:text="皇家马德里(客)"
+            android:textColor="#fff"
+            android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_zhudui"
-                android:layout_width="92dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/host_name"
-                android:layout_marginRight="19dp"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="k联赛排名第7"
-                android:textColor="#aaa"
-                android:textSize="12sp" />
-        <!--</RelativeLayout>-->
+        <TextView
+            android:id="@+id/tv_zhudui"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/host_name"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="k联赛排名第7"
+            android:textColor="#aaa"
+            android:textSize="10sp" />
     </RelativeLayout>
 
 
@@ -334,23 +272,21 @@
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="56dp"
                     app:contentInsetStart="0dp"
-                    app:layout_collapseMode="pin"
-                    >
+                    app:layout_collapseMode="pin">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageButton
+                            android:id="@+id/back"
                             android:layout_width="30dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
                             android:background="#00ffffff"
                             android:src="@drawable/commen_back_img" />
-
-
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -367,7 +303,7 @@
                                 android:layout_alignParentRight="true"
                                 android:layout_marginRight="10dp"
                                 android:src="@drawable/guanzhu"
-                                android:visibility="gone" />
+                                />
 
                             <ImageView
                                 android:id="@+id/fenxiang"
@@ -376,7 +312,7 @@
                                 android:layout_centerInParent="true"
                                 android:layout_marginRight="10dp"
                                 android:src="@drawable/zhibo"
-                                android:visibility="gone" />
+                                 />
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -388,8 +324,8 @@
                 android:id="@+id/switch_title"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                app:layout_collapseMode="pin"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                app:layout_collapseMode="pin" />
         </android.support.design.widget.AppBarLayout>
 
         <!--<android.support.v4.view.ViewPager-->
@@ -589,6 +525,72 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -663,10 +665,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -678,65 +676,6 @@
                     android:layout_height="wrap_content"
                     android:text="测试测试测试测试测试测试测试测试测试测试测试" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="测试测试测试测试测试测试测试测试测试测试测试" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -811,6 +750,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
