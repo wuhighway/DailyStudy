@@ -1,7 +1,5 @@
 package com.highway.study.coustomview.loadingview.bean;
 
-import android.support.annotation.NonNull;
-
 /**
  * Created by JH
  * on 2017/2/28.

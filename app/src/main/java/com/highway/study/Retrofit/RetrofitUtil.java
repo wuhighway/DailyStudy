@@ -12,6 +12,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by JH
@@ -45,8 +47,8 @@ public class RetrofitUtil {
 //                        .addQueryParameter("source", Config.getInstance(CaiYi.getInstance()).getSource())
 //                        .addQueryParameter("accesstoken", Config.getInstance(CaiYi.getInstance()).getToken())
 //                        .addQueryParameter("appid", Config.getInstance(CaiYi.getInstance()).getAppId())
-                        .addQueryParameter("logintype", "1")
-                        .addQueryParameter("mtype", "1")
+//                        .addQueryParameter("logintype", "1")
+//                        .addQueryParameter("mtype", "1")
 //                        .addQueryParameter("rversion", Utility.getVersionName(CaiYi.getInstance()))
 //                        .addQueryParameter("imei", Utility.getUid(CaiYi.getInstance()))
 //                        .addQueryParameter("osversion" , Config.getInstance(CaiYi.getInstance()).getMobileReleaseVersion())
@@ -56,7 +58,7 @@ public class RetrofitUtil {
                 Request newRequest = oldRequest.newBuilder()
                         .method(oldRequest.method(), oldRequest.body())
                         .url(authorizedUrlBuilder.build())
-                        .addHeader("Accept-Encoding", "gzip") // 添加头部信息
+//                        .addHeader("Accept-Encoding", "gzip") // 添加头部信息
                         .build();
 
                 // 获取返回头部信息
@@ -82,15 +84,17 @@ public class RetrofitUtil {
         if (mRetrofit == null){
             initClient();
             mRetrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(ApiStores.API_SERVER_URL)
                     .client(mOkHttpClient)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
         }
         return mRetrofit;
     }
 
 
-//    ApiClient apiClient = RetrofitUtil.retrofit().create(ApiClient.class);
+//    ApiStores apiClient = RetrofitUtil.retrofit().create(ApiStores.class);
 //    Call<ResponseBody> call = apiClient.getSearchOrder();
 //    call.enqueue(new Callback<ResponseBody>() {
 //        @Override

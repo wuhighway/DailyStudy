@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script type="text/javascript">
+
+	function javaCallJs(){
+		 document.getElementById("content").innerHTML +=   
+	         "<br\>java调用了js无参函数";
+	}
+	
+	function javaCallJs(arg){
+		 document.getElementById("content").innerHTML =
+	         ("欢迎："+arg );
+	}
+	
+	
+   function showDialog(){
+      alert("你好,我是来自javascript");
+   }
+   
+
+
+
+
+
+    </script>
+
+
+</head>
+
+
+<body>
+
+<div align="left" id="content"> google</div>
+<div align="right">welcome</div>
+
+<p><img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"></p>
+
+
+<input type="button" value="点击Android被调用" onclick="window.Android.showToast()" />
+
+</body>
+
+
+</html>

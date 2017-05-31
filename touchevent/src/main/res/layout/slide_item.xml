@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dailystudy.touchevent.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <TextView
+        android:id="@+id/item_content"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#44000000"
+        android:gravity="center"
+        android:text="Content"
+        android:textColor="#000000"
+        android:textSize="25sp"/>
+    <TextView
+        android:id="@+id/item_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:background="#22000000"
+        android:gravity="center"
+        android:text="Delete"
+        android:textColor="#ff0000"
+        android:textSize="25sp"/>
+</com.dailystudy.touchevent.SwipeMenuLayout>

@@ -1,17 +1,25 @@
 <resources>
     <string name="app_name">DailyStudy</string>
     <string-array name="title">
-        <item>viewflipper</item>
-        <item>takephoto</item>
-        <item>datepick</item>
-        <item>coustom</item>
-        <item>animate</item>
-        <item>service</item>
-        <item>share element</item>
-        <item>sqlite</item>
-        <item>keyboard</item>
-        <item>SpannableString</item>
-        <item>notification</item>
+        <item>viewflipper</item> <!-- 滚动广告栏-->
+        <item>takephoto</item> <!-- 拍照-->
+        <item>datepick</item>  <!-- 时间选择器-->
+        <item>coustom</item> <!-- 自定义view-->
+        <item>animate</item> <!-- 动画-->
+        <item>service</item> <!-- service-->
+        <item>share element</item> <!-- 共享元素-->
+        <item>sqlite</item> <!-- 数据库-->
+        <item>keyboard</item> <!-- 自定义键盘-->
+        <item>SpannableString</item> <!-- spannableString 简单用法-->
+        <item>retrofit</item> <!-- retrofit-->
+        <item>shake</item> <!-- 摇一摇监听-->
+        <item>rxjava</item> <!-- rxjava-->
+        <item>CountDownTimer</item> <!-- 倒计时-->
+        <item>ScanImage</item> <!-- 浏览图片-->
+        <item>edittext</item> <!-- 自定义输入框-->
+        <item>recyclerview</item> <!-- recyclerview-->
+        <item>h5</item> <!-- h5相关-->
+        <item>CoordinatorLayout</item> <!-- CoordinatorLayout相关-->
     </string-array>
 
     <string-array name="animation_apis">
@@ -25,4 +33,14 @@
         <item>Shared Element Transitions</item>
         <item>Animated Vector Drawables</item>
     </string-array>
+
+    <string name="city">城市:</string>
+    <string name="wd">\n风向:</string>
+    <string name="ws">\n风级:</string>
+    <string name="time">\n发布时间:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

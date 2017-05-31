@@ -7,11 +7,20 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
+import com.highway.study.coordinatorLayout.CoordinatorLayoutActivity;
+import com.highway.study.coordinatorLayout.TextViewActivity;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
+import com.highway.study.customedittext.SecurityActivity;
+import com.highway.study.cutdowntimer.CountdownTimerActivity;
+import com.highway.study.hardware.ShakeActivity;
+import com.highway.study.javaandh5.JavaAndH5Activity;
 import com.highway.study.keyboard.KeyBoardActivity;
-import com.highway.study.notification.NotificationActivity;
+import com.highway.study.recyclerview.RecyclerViewActivity;
+import com.highway.study.rxjava.RxJavaActivity;
+import com.highway.study.scanphotos.ScanImageviewActivity;
 import com.highway.study.service.ServiceActivity;
 import com.highway.study.shareelem.ShareTractionActivity;
 import com.highway.study.spannablestring.SpannableStringActivity;
@@ -39,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         String[] apiArray = getResources().getStringArray(R.array.title);
-        TitleAdapter titleAdapter =
-                new TitleAdapter(apiArray, onRecyclerItemClick);
+        TitleAdapter titleAdapter = new TitleAdapter(apiArray, onRecyclerItemClick);
         recyclerView.setAdapter(titleAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, R.drawable.divider));
     }
@@ -82,7 +90,31 @@ public class MainActivity extends AppCompatActivity {
                             intent = new Intent(MainActivity.this, SpannableStringActivity.class);
                             break;
                         case 10:
-                            intent = new Intent(MainActivity.this, NotificationActivity.class);
+                            intent = new Intent(MainActivity.this, RetrofitActivity.class);
+                            break;
+                        case 11:
+                            intent = new Intent(MainActivity.this, ShakeActivity.class);
+                            break;
+                        case 12:
+                            intent = new Intent(MainActivity.this, RxJavaActivity.class);
+                            break;
+                        case 13:
+                            intent = new Intent(MainActivity.this, CountdownTimerActivity.class);
+                            break;
+                        case 14:
+                            intent = new Intent(MainActivity.this, ScanImageviewActivity.class);
+                            break;
+                        case 15:
+                            intent = new Intent(MainActivity.this, SecurityActivity.class);
+                            break;
+                        case 16:
+                            intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                            break;
+                        case 17:
+                            intent = new Intent(MainActivity.this, JavaAndH5Activity.class);
+                            break;
+                        case 18:
+                            intent = new Intent(MainActivity.this, TextViewActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

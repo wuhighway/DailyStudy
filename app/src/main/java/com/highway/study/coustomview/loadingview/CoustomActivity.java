@@ -2,13 +2,8 @@ package com.highway.study.coustomview.loadingview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.highway.study.R;
-import com.highway.study.coustomview.loadingview.bean.PieData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CoustomActivity extends AppCompatActivity {
 
