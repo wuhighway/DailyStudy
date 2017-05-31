@@ -114,8 +114,10 @@
         <activity
             android:name=".coordinatorLayout.CoordinatorLayoutActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".coordinatorLayout.TextViewActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".coordinatorLayout.TextViewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".screenshots.ScreenshotsActivity"></activity>
     </application>
 
 </manifest>

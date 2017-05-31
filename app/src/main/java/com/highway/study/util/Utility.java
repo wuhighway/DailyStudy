@@ -8,6 +8,8 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
@@ -136,5 +138,35 @@ public class Utility {
         }
     }
 
+    /**
+     * 判断触摸是否在当前view的范围内
+     */
+    public static boolean inRangeOfView(View view, MotionEvent ev) {
+        int[] location = new int[2];
+        if (view == null || !view.isShown()) {
+            return false;
+        }
+        view.getLocationOnScreen(location);
+        int x = location[0];
+        int y = location[1];
+        if (ev.getRawX() < x
+                || ev.getRawX() > (x + view.getWidth())
+                || ev.getRawY() < y
+                || ev.getRawY() > (y + view.getHeight())) {
+            return false;
+        }
+        return true;
+    }
 
+    /**
+     * dip to px
+     *
+     * @param context context
+     * @param dpValue dp
+     * @return px
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f); // SUPPRESS CHECKSTYLE
+    }
 }

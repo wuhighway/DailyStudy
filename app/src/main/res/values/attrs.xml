@@ -21,5 +21,9 @@
             <enum name="STROKE" value="0" />
             <enum name="FILL" value="1" />
         </attr>
+        <attr name="type">
+            <enum name="basket" value="0"/>
+            <enum name="football" value="1"/>
+        </attr>
     </declare-styleable>
 </resources>

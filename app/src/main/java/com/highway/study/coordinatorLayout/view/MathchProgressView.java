@@ -63,6 +63,9 @@ public class MathchProgressView extends View {
     //圆环进度条的样式
     private int style;
 
+    //比赛的类型
+    private int type;
+
     //空心样式
     public static final int STROKE = 0;
 
@@ -115,7 +118,11 @@ public class MathchProgressView extends View {
         max = mTypedArray.getInteger(R.styleable.RingProgressBar_max, 100);
         textIsShow = mTypedArray.getBoolean(R.styleable.RingProgressBar_textIsShow, true);
         style = mTypedArray.getInt(R.styleable.RingProgressBar_style, 0);
-
+        type = mTypedArray.getInt(R.styleable.RingProgressBar_type, 0);
+        if (type == 0) {
+            ringColor = Color.parseColor("#FC5638");
+            ringProgressColor = Color.parseColor("#7C859D");
+        }
         mTypedArray.recycle();
     }
 
@@ -328,6 +335,13 @@ public class MathchProgressView extends View {
         }
     }
 
+    /**
+     *重置进度
+     */
+    public void resetProgress() {
+        progress = 0;
+        invalidate();
+    }
 
     /**
      * 获取圆环的颜色
