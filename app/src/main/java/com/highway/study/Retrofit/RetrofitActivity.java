@@ -12,19 +12,14 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import retrofit2.Call;
-import rx.Observable;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
 
 public class RetrofitActivity extends AppCompatActivity {
 
     @Bind(R.id.text)
     TextView textView;
-    private CompositeSubscription mCompositeSubscription;
+//    private CompositeSubscription mCompositeSubscription;
     private List<Call> calls;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,22 +53,22 @@ public class RetrofitActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        addSubscription(apiClient.loadDataByRetrofitRxjava("101190201"), new ApiCallback<MainModel>() {
-            @Override
-            public void onSuccess(MainModel model) {
-                dataSuccess(model);
-            }
-
-            @Override
-            public void onFailure(String msg) {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        });
+//        addSubscription(apiClient.loadDataByRetrofitRxjava("101190201"), new ApiCallback<MainModel>() {
+//            @Override
+//            public void onSuccess(MainModel model) {
+//                dataSuccess(model);
+//            }
+//
+//            @Override
+//            public void onFailure(String msg) {
+//
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//
+//            }
+//        });
 
 //        addCalls(call);
     }
@@ -88,28 +83,28 @@ public class RetrofitActivity extends AppCompatActivity {
     }
 
 
-    public void addSubscription(Observable observable, Subscriber subscriber) {
-        if (mCompositeSubscription == null) {
-            mCompositeSubscription = new CompositeSubscription();
-        }
-        mCompositeSubscription.add(observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber));
-    }
+//    public void addSubscription(Observable observable, Subscriber subscriber) {
+//        if (mCompositeSubscription == null) {
+//            mCompositeSubscription = new CompositeSubscription();
+//        }
+////        mCompositeSubscription.add(observable
+////                .subscribeOn(Schedulers.io())
+////                .observeOn(AndroidSchedulers.mainThread())
+////                .subscribe(subscriber));
+//    }
 
-    public void addSubscription(Subscription subscription) {
-        if (mCompositeSubscription == null) {
-            mCompositeSubscription = new CompositeSubscription();
-        }
-        mCompositeSubscription.add(subscription);
-    }
-
-    public void onUnsubscribe() {
-        //取消注册，以避免内存泄露
-        if (mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions())
-            mCompositeSubscription.unsubscribe();
-    }
+//    public void addSubscription(Subscription subscription) {
+//        if (mCompositeSubscription == null) {
+//            mCompositeSubscription = new CompositeSubscription();
+//        }
+//        mCompositeSubscription.add(subscription);
+//    }
+//
+//    public void onUnsubscribe() {
+//        //取消注册，以避免内存泄露
+//        if (mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions())
+//            mCompositeSubscription.unsubscribe();
+//    }
 
     public void addCalls(Call call) {
         if (calls == null) {
@@ -132,6 +127,6 @@ public class RetrofitActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         callCancel();
-        onUnsubscribe();
+//        onUnsubscribe();
     }
 }

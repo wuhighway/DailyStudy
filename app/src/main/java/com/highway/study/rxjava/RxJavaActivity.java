@@ -6,16 +6,22 @@ import android.util.Log;
 
 import com.highway.study.R;
 
+import org.reactivestreams.Subscription;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.FlowableSubscriber;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.schedulers.Schedulers;
+
 
 public class RxJavaActivity extends AppCompatActivity {
     private static final String TAG = "RxJavaActivity";
@@ -24,6 +30,7 @@ public class RxJavaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
+        //rxjava 1.x
         // 1、create
 //        create();
         // 2、from
@@ -43,7 +50,10 @@ public class RxJavaActivity extends AppCompatActivity {
 //        elementAt();
 //        map();
 //        flatMap1();
-        concatMap();
+//        concatMap();
+
+        // rxjava 2.x
+        flowable();
 
     }
 
@@ -52,62 +62,62 @@ public class RxJavaActivity extends AppCompatActivity {
      * cerate
      */
     private void create() {
-        Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                for (int i = 0; i < 20; i++) {
-                    subscriber.onNext("fuck i is " + i);
-                }
-                subscriber.onCompleted();
-            }
-        });
-
-        Subscriber<String> subscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                Log.i(TAG, "onCompleted");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.i(TAG, "error");
-            }
-
-            @Override
-            public void onNext(String o) {
-                Log.i(TAG, o);
-            }
-        };
-        observable.subscribe(subscriber);
+//        Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
+//            @Override
+//            public void call(Subscriber<? super String> subscriber) {
+//                for (int i = 0; i < 20; i++) {
+//                    subscriber.onNext("fuck i is " + i);
+//                }
+//                subscriber.onCompleted();
+//            }
+//        });
+//
+//        Subscriber<String> subscriber = new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//                Log.i(TAG, "onCompleted");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                Log.i(TAG, "error");
+//            }
+//
+//            @Override
+//            public void onNext(String o) {
+//                Log.i(TAG, o);
+//            }
+//        };
+//        observable.subscribe(subscriber);
     }
 
     /**
      * form 操作集合
      */
     private void form() {
-        List<String> items = new ArrayList<String>();
-        items.add("1");
-        items.add("10");
-        items.add("100");
-        items.add("200");
-        Observable<String> observableString = Observable.from(items);
-        Subscriber<String> subscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                Log.i(TAG, "onCompleted");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.i(TAG, s);
-            }
-        };
-        observableString.subscribe(subscriber);
+//        List<String> items = new ArrayList<String>();
+//        items.add("1");
+//        items.add("10");
+//        items.add("100");
+//        items.add("200");
+//        Observable<String> observableString = Observable.from(items);
+//        Subscriber<String> subscriber = new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//                Log.i(TAG, "onCompleted");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Log.i(TAG, s);
+//            }
+//        };
+//        observableString.subscribe(subscriber);
     }
 
     /**
@@ -117,48 +127,48 @@ public class RxJavaActivity extends AppCompatActivity {
      * 通常，当我们想发射一组已经定义好的值时会用到它。
      */
     private void just() {
-        //通过调用just方法，传入你想发送的数据源，当订阅者进行订阅的时候就开始打印数据
-        Observable<String> observableString = Observable.just("i", "lo", "you", "ve", "much", "kkk", "jjj");
-        Subscriber<String> subscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                Log.i(TAG, "onCompleted");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.i(TAG, s);
-            }
-        };
-        observableString.subscribe(subscriber);
+//        //通过调用just方法，传入你想发送的数据源，当订阅者进行订阅的时候就开始打印数据
+//        Observable<String> observableString = Observable.just("i", "lo", "you", "ve", "much", "kkk", "jjj");
+//        Subscriber<String> subscriber = new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//                Log.i(TAG, "onCompleted");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Log.i(TAG, s);
+//            }
+//        };
+//        observableString.subscribe(subscriber);
     }
 
     private void repeat() {
         //假如你想对一个Observable重复发射三次数据。例如，我们用just()例子中的Observable：
         //通过添加repeat(3)，just里面的内容会被打印3次
-        Observable<String> observableString = Observable.just("i", "lo", "y", "ve", "ch").repeat(3);
-        Subscriber<String> subscriber = new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-                Log.i(TAG, "onCompleted");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.i(TAG, s);
-            }
-        };
-        observableString.subscribe(subscriber);
+//        Observable<String> observableString = Observable.just("i", "lo", "y", "ve", "ch").repeat(3);
+//        Subscriber<String> subscriber = new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//                Log.i(TAG, "onCompleted");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Log.i(TAG, s);
+//            }
+//        };
+//        observableString.subscribe(subscriber);
 
     }
 
@@ -167,24 +177,24 @@ public class RxJavaActivity extends AppCompatActivity {
      */
     private void range() {
 //        从一个指定的数字x开发发射n个数字
-        Observable
-                .range(10, 3)
-                .repeat(3)
-                .subscribe(new Observer<Integer>() {
-
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onNext(Integer number) {
-                        Log.i(TAG, number + "");
-                    }
-                });
+//        Observable
+//                .range(10, 3)
+//                .repeat(3)
+//                .subscribe(new Observer<Integer>() {
+//
+//                    @Override
+//                    public void onCompleted() {
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                    }
+//
+//                    @Override
+//                    public void onNext(Integer number) {
+//                        Log.i(TAG, number + "");
+//                    }
+//                });
     }
 
     /**
@@ -192,23 +202,23 @@ public class RxJavaActivity extends AppCompatActivity {
      */
     private void interval() {
         //interval()函数在你需要创建一个轮询程序时非常好用。
-        Observable.interval(3, TimeUnit.SECONDS)
-                .subscribe(new Subscriber<Long>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(Long aLong) {
-
-                    }
-                });
+//        Observable.interval(3, TimeUnit.SECONDS)
+//                .subscribe(new Subscriber<Long>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(Long aLong) {
+//
+//                    }
+//                });
     }
 
     /**
@@ -216,24 +226,24 @@ public class RxJavaActivity extends AppCompatActivity {
      */
     private void timmer() {
         //如果你需要一个一段时间之后才发射的Observable，你可以像下面的例子使用timer()：
-        Observable.timer(3, TimeUnit.SECONDS)
-                .subscribe(new Observer<Long>() {
-
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(Long number) {
-                        Log.d(TAG, "I say " + number);
-                    }
-                });
+//        Observable.timer(3, TimeUnit.SECONDS)
+//                .subscribe(new Observer<Long>() {
+//
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(Long number) {
+//                        Log.d(TAG, "I say " + number);
+//                    }
+//                });
     }
 
     /**
@@ -242,33 +252,33 @@ public class RxJavaActivity extends AppCompatActivity {
      */
     public void filter() {
         //RxJava让我们使用filter()方法来过滤我们观测序列中不想要的值
-        List<String> items = new ArrayList<String>();
-        items.add("H1");
-        items.add("h10");
-        items.add("h100");
-        items.add("h200");
-
-        Observable.from(items).filter(new Func1<String, Boolean>() {
-            @Override
-            public Boolean call(String s) {
-                return s.startsWith("H");
-            }
-        }).subscribe(new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.e(TAG, s);
-            }
-        });
+//        List<String> items = new ArrayList<String>();
+//        items.add("H1");
+//        items.add("h10");
+//        items.add("h100");
+//        items.add("h200");
+//
+//        Observable.from(items).filter(new Func1<String, Boolean>() {
+//            @Override
+//            public Boolean call(String s) {
+//                return s.startsWith("H");
+//            }
+//        }).subscribe(new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Log.e(TAG, s);
+//            }
+//        });
     }
 
     /**
@@ -277,22 +287,22 @@ public class RxJavaActivity extends AppCompatActivity {
      */
     private void take() {
         //take()函数用整数N来作为一个参数，从原始的序列中发射前N个元素，然后完成：
-        Observable.just("H1", "h2", "h3", "h4", "h5").take(3).subscribe(new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.i(TAG, s);
-            }
-        });
+//        Observable.just("H1", "h2", "h3", "h4", "h5").take(3).subscribe(new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Log.i(TAG, s);
+//            }
+//        });
 
     }
 
@@ -301,23 +311,23 @@ public class RxJavaActivity extends AppCompatActivity {
      * 就像takeLast()一样，distinct()作用于一个完整的序列，然后得到重复的过滤项，它需要记录每一个发射的值。
      */
     private void distinct() {
-        Observable.just("H1", "h2", "h2", "h3", "h4", "h5")//.repeat(3)//输入重复3遍
-                .distinct().subscribe(new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.i(TAG, s);
-            }
-        });
+//        Observable.just("H1", "h2", "h2", "h3", "h4", "h5")//.repeat(3)//输入重复3遍
+//                .distinct().subscribe(new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Log.i(TAG, s);
+//            }
+//        });
     }
 
     /**
@@ -326,23 +336,23 @@ public class RxJavaActivity extends AppCompatActivity {
 
     private void skip() {
         // eg:先过滤重复的数据，然后在限制第一个和后两个不能发射，只发射h2、h3
-        Observable.just("H1", "h2", "h2", "h3", "h4", "h5")
-                .distinct().skip(1).skipLast(2).subscribe(new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.i(TAG, s);
-            }
-        });
+//        Observable.just("H1", "h2", "h2", "h3", "h4", "h5")
+//                .distinct().skip(1).skipLast(2).subscribe(new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Log.i(TAG, s);
+//            }
+//        });
     }
 
     /**
@@ -354,26 +364,26 @@ public class RxJavaActivity extends AppCompatActivity {
         // 返回序列下标从0 开始
         // eg1 : 发射h4
         // eg2 : 一共只有五个元素，发射第六个无法找到，发射默认 no string
-        Observable.just("H1", "h2", "h3", "h4", "h5")
-                .distinct()
-//                .elementAt(3)
-                .elementAtOrDefault(5, "no string")
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-                        Log.i(TAG, s);
-                    }
-                });
+//        Observable.just("H1", "h2", "h3", "h4", "h5")
+//                .distinct()
+////                .elementAt(3)
+//                .elementAtOrDefault(5, "no string")
+//                .subscribe(new Subscriber<String>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(String s) {
+//                        Log.i(TAG, s);
+//                    }
+//                });
     }
 
     /**
@@ -381,27 +391,27 @@ public class RxJavaActivity extends AppCompatActivity {
      * 它将在一个指定的时间间隔里由Observable发射最近一次的数值：
      */
     private void sampling() {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
-            list.add("i = " + i);
-        }
-        Observable<String> observable = Observable.from(list);
-        observable.sample(50, TimeUnit.MILLISECONDS).subscribe(new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(String s) {
-                Log.i(TAG, s);
-            }
-        });
+//        List<String> list = new ArrayList<>();
+//        for (int i = 0; i < 1000; i++) {
+//            list.add("i = " + i);
+//        }
+//        Observable<String> observable = Observable.from(list);
+//        observable.sample(50, TimeUnit.MILLISECONDS).subscribe(new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Log.i(TAG, s);
+//            }
+//        });
         //50毫秒取一次最近的消息进行打印
     }
 
@@ -433,113 +443,113 @@ public class RxJavaActivity extends AppCompatActivity {
 //            }
 //        });
 //        接收一系列的String，经过map转成integer类型，然后打印出来。
-        List<String> items = new ArrayList<String>();
-        items.add("H1");
-        items.add("h10");
-        items.add("h100");
-        items.add("h200");
-        Observable
-                .from(items)
-                .map(new Func1<String, Integer>() {
-            @Override
-            public Integer call(String s) {
-                return s.startsWith("H") ? 0 : 1;
-            }
-        })
-                .subscribe(new Subscriber<Integer>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(Integer integer) {
-                Log.e(TAG, integer + "");
-            }
-        });
+//        List<String> items = new ArrayList<String>();
+//        items.add("H1");
+//        items.add("h10");
+//        items.add("h100");
+//        items.add("h200");
+//        Observable
+//                .from(items)
+//                .map(new Func1<String, Integer>() {
+//            @Override
+//            public Integer call(String s) {
+//                return s.startsWith("H") ? 0 : 1;
+//            }
+//        })
+//                .subscribe(new Subscriber<Integer>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(Integer integer) {
+//                Log.e(TAG, integer + "");
+//            }
+//        });
     }
 
     /**
      * flatMap
      */
     private void flatMap1() {
-        Observable.just("上海", "南京").flatMap(new Func1<String, Observable<WeatherInfo>>() {
-            @Override
-            public Observable<WeatherInfo> call(final String s) {
-                return Observable.create(new Observable.OnSubscribe<WeatherInfo>() {
-                    @Override
-                    public void call(Subscriber<? super WeatherInfo> subscriber) {
-                        subscriber.onNext(getWeatherInfo(s));
-                        subscriber.onCompleted();
-                    }
-                }).subscribeOn(Schedulers.io()) ; // 时间发生在io
-            }
-        })
-                .observeOn(AndroidSchedulers.mainThread()) // 更新发生在ui
-                .subscribe(new Subscriber<WeatherInfo>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.e(TAG, "onCompleted");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(TAG, e.toString());
-                    }
-
-                    @Override
-                    public void onNext(WeatherInfo weatherInfo) {
-                        Log.e(TAG, weatherInfo.name);
-                    }
-                });
+//        Observable.just("上海", "南京").flatMap(new Func1<String, Observable<WeatherInfo>>() {
+//            @Override
+//            public Observable<WeatherInfo> call(final String s) {
+//                return Observable.create(new Observable.OnSubscribe<WeatherInfo>() {
+//                    @Override
+//                    public void call(Subscriber<? super WeatherInfo> subscriber) {
+//                        subscriber.onNext(getWeatherInfo(s));
+//                        subscriber.onCompleted();
+//                    }
+//                }).subscribeOn(Schedulers.io()) ; // 时间发生在io
+//            }
+//        })
+//                .observeOn(AndroidSchedulers.mainThread()) // 更新发生在ui
+//                .subscribe(new Subscriber<WeatherInfo>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.e(TAG, "onCompleted");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.e(TAG, e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(WeatherInfo weatherInfo) {
+//                        Log.e(TAG, weatherInfo.name);
+//                    }
+//                });
     }
 
     private void concatMap() {
-        Observable.just("上海", "苏州").concatMap(new Func1<String, Observable<WeatherInfo>>() {
-            @Override
-            public Observable<WeatherInfo> call(final String s) {
-                return Observable.create(new Observable.OnSubscribe<WeatherInfo>() {
-                    @Override
-                    public void call(Subscriber<? super WeatherInfo> subscriber) {
-                        subscriber.onNext(getWeatherInfo(s));
-                        subscriber.onCompleted();
-                    }
-                }).subscribeOn(Schedulers.io());
-            }
-        }).observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Subscriber<WeatherInfo>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(WeatherInfo weatherInfo) {
-                Log.e(TAG, weatherInfo.name);
-            }
-        });
+//        Observable.just("上海", "苏州").concatMap(new Func1<String, Observable<WeatherInfo>>() {
+//            @Override
+//            public Observable<WeatherInfo> call(final String s) {
+//                return Observable.create(new Observable.OnSubscribe<WeatherInfo>() {
+//                    @Override
+//                    public void call(Subscriber<? super WeatherInfo> subscriber) {
+//                        subscriber.onNext(getWeatherInfo(s));
+//                        subscriber.onCompleted();
+//                    }
+//                }).subscribeOn(Schedulers.io());
+//            }
+//        }).observeOn(AndroidSchedulers.mainThread())
+//        .subscribe(new Subscriber<WeatherInfo>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(WeatherInfo weatherInfo) {
+//                Log.e(TAG, weatherInfo.name);
+//            }
+//        });
     }
 
 
     private Observable<WeatherInfo> getWeather(final String city) {
-        Observable<WeatherInfo> observable = Observable.create(new Observable.OnSubscribe<WeatherInfo>() {
-            @Override
-            public void call(Subscriber<? super WeatherInfo> subscriber) {
-                subscriber.onNext(getWeatherInfo(city));
-                subscriber.onCompleted();
-            }
-        }).subscribeOn(Schedulers.io());//网络请求一定要加这句
-        return observable;
+//        Observable<WeatherInfo> observable = Observable.create(new Observable.OnSubscribe<WeatherInfo>() {
+//            @Override
+//            public void call(Subscriber<? super WeatherInfo> subscriber) {
+//                subscriber.onNext(getWeatherInfo(city));
+//                subscriber.onCompleted();
+//            }
+//        }).subscribeOn(Schedulers.io());//网络请求一定要加这句
+        return null;
     }
 
     private WeatherInfo getWeatherInfo(String city) {
@@ -556,5 +566,46 @@ public class RxJavaActivity extends AppCompatActivity {
         public WeatherInfo(String name) {
             this.name = name;
         }
+    }
+
+    private void flowable() {
+        Flowable.create(new FlowableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull FlowableEmitter<Integer> e) throws Exception {
+                Log.e(TAG, "start send data ");
+                for (int i = 0; i < 100; i++) {
+                    e.onNext(i);
+                }
+                e.onComplete();
+            }
+        }, BackpressureStrategy.DROP)//指定背压策略
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new FlowableSubscriber<Integer>() {
+                    @Override
+                    public void onSubscribe(@NonNull Subscription s) {
+                        //1， onSubscribe 是2.x新添加的方法，在发射数据前被调用，相当于1.x的onStart方法
+                        //2， 参数为  Subscription ，Subscription 可用于向上游请求发射多少个元素，也可用于取笑请求
+                        //3,  必须要调用Subscription 的request来请求发射数据，不然上游是不会发射数据的。
+                        Log.e(TAG, "onSubscribe...");
+                        s.request(10);
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        Log.e(TAG, "onNext:" + integer);
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        Log.e(TAG, "onError..." + t);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e(TAG, "onComplete...");
+                    }
+                });
+
     }
 }
