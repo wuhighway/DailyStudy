@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DailyStudy.iml" filepath="$PROJECT_DIR$/DailyStudy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DailyStudy.iml" filepath="$PROJECT_DIR$/DailyStudy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerviewdm/recyclerviewdm.iml" filepath="$PROJECT_DIR$/recyclerviewdm/recyclerviewdm.iml" />
       <module fileurl="file://$PROJECT_DIR$/touchevent/touchevent.iml" filepath="$PROJECT_DIR$/touchevent/touchevent.iml" />
