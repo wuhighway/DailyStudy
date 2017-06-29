@@ -31,7 +31,7 @@ public class RetrofitActivity extends AppCompatActivity {
     @OnClick(R.id.btn)
     public void onClick() {
         ApiStores apiClient = RetrofitUtil.retrofit().create(ApiStores.class);
-//        Call<MainModel> call = apiClient.loadDataByRetrofit("101190201");
+        Call<MainModel> call = apiClient.loadDataByRetrofit("101190201");
 //        call.enqueue(new RetrofitCallback<MainModel>() {
 //            @Override
 //            public void onSuccess(MainModel model) {
