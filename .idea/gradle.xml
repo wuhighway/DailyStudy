@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/annnotationhelper" />
             <option value="$PROJECT_DIR$/annotationdemo" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/recyclerviewdm" />
