@@ -117,7 +117,13 @@
         <activity
             android:name=".coordinatorLayout.TextViewActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".screenshots.ScreenshotsActivity"></activity>
+        <activity android:name=".screenshots.ScreenshotsActivity" />
+        <activity android:name=".androidbase.BaseActivity" />
+
+        <service
+            android:name=".androidbase.BaseService"
+            android:enabled="true"
+            android:exported="false"></service>
     </application>
 
 </manifest>

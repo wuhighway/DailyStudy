@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.highway.study.Retrofit.RetrofitActivity;
+import com.highway.study.androidbase.BaseActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
 import com.highway.study.coordinatorLayout.CoordinatorLayoutActivity;
@@ -115,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 18:
                             intent = new Intent(MainActivity.this, TextViewActivity.class);
+                            break;
+                        case 19:
+                            intent = new Intent(MainActivity.this, BaseActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);
