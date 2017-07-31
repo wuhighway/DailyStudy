@@ -1,1 +1,70 @@
+def initMinshengGradleEnvironment() {
+//    println "initialize setting Environment"
+//    Properties properties = new Properties();
+//    File propertiesFile = new File(rootDir.getAbsolutePath() + "/local.properties")
+//    properties.load(propertiesFile.newInputStream())
+//    gradle.ext.sdkDir = properties.getProperty('sdk.dir')
+//    gradle.ext.ndkDir = properties.getProperty('ndk.dir')
+//    println"initialize setting Environment completes..."
+//    propertiesFile.eachLine {
+//        line, lineNo ->
+//            println"no $lineNo, $line"
+//    }
+
+    File propertiesFile = new File("bankcard")
+    propertiesFile.eachLine { line ->
+        def value = luhnCheck(realIn(convertStrToInArr(line)))
+
+        if (!value)
+            println "cardNum = " + line
+    }
+    println "setting.gradle"
+}
+
+def convertStrToInArr(String cardNo) {
+    if (null == cardNo) throw new IllegalArgumentException();
+    int index = cardNo.length();
+    int[] cardNoArr = new int[cardNo.length()];
+    def cvalue
+    for (char c : cardNo.toCharArray()) {
+        cvalue = c as Integer
+        cardNoArr[--index] = cvalue - 48
+
+    }
+    return cardNoArr;
+}
+
+def realIn(int[] no) {
+    int[] cardNoArr
+    if (null != no && no.length > 0) {
+        cardNoArr = Arrays.copyOf(no, no.length);
+        for (int i = 0; i < no.length; i++) {
+            if (no[i] < 0) {
+                throw new IllegalArgumentException("No can not contain negtive value");
+            }
+        }
+    } else {
+        throw new IllegalArgumentException("No is null or Empty");
+    }
+    return cardNoArr;
+}
+
+
+def boolean luhnCheck(int[] cardNoArr) {
+    for (int i = 1; i < cardNoArr.length; i += 2) {
+        cardNoArr[i] <<= 1;
+        cardNoArr[i] = cardNoArr[i] / 10 + cardNoArr[i] % 10;
+    }
+    int sum = 0;111
+    for (int i = 0; i < cardNoArr.length; i++) {
+        sum += cardNoArr[i];
+        //System.out.print(cardNoArr[i]);
+    }
+
+    return sum % 10 == 0;
+}
+
+initMinshengGradleEnvironment()
+
+
 include ':app', ':touchevent', ':recyclerviewdm', ':shapedemo', ':annotationdemo', ':annnotationhelper'
