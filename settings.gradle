@@ -11,14 +11,14 @@ def initMinshengGradleEnvironment() {
 //            println"no $lineNo, $line"
 //    }
 
-    File propertiesFile = new File("bankcard.txt")
-    propertiesFile.eachLine { line ->
-        def value = luhnCheck(realIn(convertStrToInArr(line)))
-
-        if (!value) {
-            println "cardNum = " + line
-        }
-    }
+//    File propertiesFile = new File("bankcard.txt")
+//    propertiesFile.eachLine { line ->
+//        def value = luhnCheck(realIn(convertStrToInArr(line)))
+//
+//        if (!value) {
+//            println "cardNum = " + line
+//        }
+//    }
     println "setting.gradle"
 }
 
