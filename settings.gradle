@@ -11,16 +11,22 @@ def initMinshengGradleEnvironment() {
 //            println"no $lineNo, $line"
 //    }
 
-    File propertiesFile = new File("bankcard")
+    File propertiesFile = new File("bankcard.txt")
     propertiesFile.eachLine { line ->
         def value = luhnCheck(realIn(convertStrToInArr(line)))
 
-        if (!value)
+        if (!value) {
             println "cardNum = " + line
+        }
     }
     println "setting.gradle"
 }
 
+/**
+ *
+ * @param cardNo
+ * @return
+ */
 def convertStrToInArr(String cardNo) {
     if (null == cardNo) throw new IllegalArgumentException();
     int index = cardNo.length();
@@ -58,7 +64,6 @@ def boolean luhnCheck(int[] cardNoArr) {
     int sum = 0;111
     for (int i = 0; i < cardNoArr.length; i++) {
         sum += cardNoArr[i];
-        //System.out.print(cardNoArr[i]);
     }
 
     return sum % 10 == 0;

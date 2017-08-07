@@ -70,7 +70,7 @@ aClosure.call('1', 2) // 或
 aClosure("this is string", 100)
 
 //如果闭包没定义参数的话，则隐含有一个参数，这个参数名字叫it，和this的作用类似。it代表闭包的参数。
-def aClosure3 = { "hello, $t" } // 等价于 def aClosure3 = {t -> "hello, $t"}
+def aClosure3 = { "hello, $it" } // 等价于 def aClosure3 = {t -> "hello, $t"}
 //但是，如果在闭包定义时，采用下面这种写法，则表示闭包没有参数！
 def aCousure4 = { -> true }
 
