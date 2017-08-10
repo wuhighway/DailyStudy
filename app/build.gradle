@@ -12,11 +12,46 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'APP_BASE_URL', '"www.baidu.com"'
     }
+
+    signingConfigs {
+        release{
+            storeFile file('dailyStady.jks')
+            storePassword '123456'
+            keyAlias 'android'
+            keyPassword '123456'
+            v2SigningEnabled false
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled false // 是否启动混淆
+            zipAlignEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //设置生成的apk文件的名字
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        def fileName = "dailyStadyv${defaultConfig.versionName}_${releaseTime()}_${variant.flavorName}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+    }
+
+    productFlavors {
+        "dev" {
+            applicationId "com.highway.study"
+            signingConfig signingConfigs.release
+        }
+
+        "devpro" {
+            applicationId "com.highway.study"
+            signingConfig signingConfigs.release
         }
     }
 
@@ -51,4 +86,8 @@ dependencies {
     compile 'com.zhy:base-adapter:2.0.0'
     compile 'com.google.zxing:core:3.3.0'
     testCompile 'junit:junit:4.12'
+}
+
+def releaseTime(){
+    return new Date().format("yyyy-MM-dd_HH时mm分ss秒")
 }
