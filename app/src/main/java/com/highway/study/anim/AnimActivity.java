@@ -48,32 +48,9 @@ public class AnimActivity extends AppCompatActivity {
                             intent = new Intent(
                                     AnimActivity.this, ViewPropertyAnimatorActivity.class);
                             break;
-//                        case 1:
-//                            intent = new Intent(MainActivity.this, ObjectAnimatorActivity.class);
-//                            break;
-//                        case 2:
-//                            intent = new Intent(MainActivity.this, InterpolatorActivity.class);
-//                            break;
-//                        case 3:
-//                            intent = new Intent(MainActivity.this, CircularRevealActivity.class);
-//                            break;
-//                        case 4:
-//                            intent = new Intent(MainActivity.this, MorphTransitionsActivity.class);
-//                            break;
-//                        case 5:
-//                            intent = new Intent(MainActivity.this, SharedTransitionsActivity.class);
-//                            break;
-//                        case 6:
-//                            intent = new Intent(MainActivity.this, WindowTransitionsActivity.class);
-//                            break;
-//                        case 7:
-//                            intent = new Intent(
-//                                    MainActivity.this, WindowTransitionsActivityExplode.class);
-//                            break;
-//                        case 8:
-//                            intent = new Intent(
-//                                    MainActivity.this, AnimatedVectorDrawablesActivity.class);
-//                            break;
+                        case 1:
+                            intent = new Intent(AnimActivity.this, AnimationDemoActivity.class);
+                            break;
                     }
                     if (intent != null) startActivity(intent);
                 }

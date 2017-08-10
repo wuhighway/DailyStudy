@@ -25,14 +25,14 @@
 
     <string-array name="animation_apis">
         <item>View Property Animator</item>
-        <item>Object Animator</item>
-        <item>Interpolators</item>
-        <item>Circular Reveal</item>
-        <item>Morph Transitions</item>
-        <item>Shared Transitions</item>
-        <item>Window Content Transitions</item>
-        <item>Shared Element Transitions</item>
-        <item>Animated Vector Drawables</item>
+        <item>animation</item>
+        <!--<item>Interpolators</item>-->
+        <!--<item>Circular Reveal</item>-->
+        <!--<item>Morph Transitions</item>-->
+        <!--<item>Shared Transitions</item>-->
+        <!--<item>Window Content Transitions</item>-->
+        <!--<item>Shared Element Transitions</item>-->
+        <!--<item>Animated Vector Drawables</item>-->
     </string-array>
 
     <string name="city">城市:</string>
