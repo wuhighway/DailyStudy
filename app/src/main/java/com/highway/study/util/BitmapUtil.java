@@ -1,20 +1,30 @@
 package com.highway.study.util;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.highway.study.R;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author JH
@@ -254,5 +264,103 @@ public class BitmapUtil {
             Log.e(TAG, e.toString());
         }
         return result;
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        int height = options.outHeight;
+        int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+            int halfHeight = height / 2;
+            int halfWidth = width / 2;
+            while ((halfHeight / inSampleSize) >= reqHeight && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize += 2;
+            }
+        }
+        return inSampleSize;
+    }
+
+
+    public static LruCache lruCache() {
+        int maxMemory = (int) Runtime.getRuntime().maxMemory();
+        int cacheSize = maxMemory / 8;
+        LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap value) {
+                return value.getRowBytes() * value.getHeight() / 1024;
+            }
+        };
+//        cache.put()
+//        cache.remove()
+//        cache.get()
+        return cache;
+    }
+
+    public static DiskLruCache getLruCache(Context context) {
+        long DISK_CACHE_SIZE = 1024 * 1024 * 50;
+        File disCacheDir = new File(context.getCacheDir(), "bitmap");
+        if (!disCacheDir.exists()) {
+            disCacheDir.mkdirs();
+        }
+        try {
+            DiskLruCache cache = DiskLruCache.open(disCacheDir, 1, 1, DISK_CACHE_SIZE);
+            return cache;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static String hashKeyFromUrl(String url) {
+        String cacheKey;
+
+        try {
+            MessageDigest digest = MessageDigest.getInstance("MD5");
+            digest.update(url.getBytes());
+            cacheKey = bytesToHexString(digest.digest());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            cacheKey = String.valueOf(url.hashCode());
+        }
+        return cacheKey;
+    }
+
+    private static String bytesToHexString(byte[] digest) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < digest.length; i++) {
+            String hex = Integer.toHexString(0xFF & digest[i]);
+            if (hex.length() == 1) {
+                sb.append('0');
+            }
+            sb.append(hex);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 获取磁盘中图片流
+     */
+    public static OutputStream getStreamFromDis(String url, Context context) {
+        String key = hashKeyFromUrl(url);
+        try {
+            DiskLruCache.Editor editor = getLruCache(context).edit(key);
+            if (editor != null) {
+//                OutputStream outputStream = editor.
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
