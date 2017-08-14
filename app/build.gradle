@@ -16,7 +16,7 @@ android {
     }
 
     signingConfigs {
-        release{
+        release {
             storeFile file('dailyStady.jks')
             storePassword '123456'
             keyAlias 'android'
@@ -85,10 +85,10 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.zhy:base-adapter:2.0.0'
     compile 'com.google.zxing:core:3.3.0'
-    testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:disklrucache:2.0.2'
+    testCompile 'junit:junit:4.12'
 }
 
-def releaseTime(){
+def releaseTime() {
     return new Date().format("yyyy-MM-dd_HH时mm分ss秒")
 }
