@@ -21,6 +21,7 @@
         <item>h5</item> <!-- h5相关-->
         <item>CoordinatorLayout</item> <!-- CoordinatorLayout相关-->
         <item>android_base</item>
+        <item>window</item>
     </string-array>
 
     <string-array name="animation_apis">

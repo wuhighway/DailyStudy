@@ -1,11 +1,15 @@
 package com.highway.study;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.WindowManager;
+import android.widget.Button;
 
 import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.androidbase.BaseActivity;
@@ -29,6 +33,7 @@ import com.highway.study.sqlite.SQliteTestActivity;
 import com.highway.study.takephoto.TakePhotoActivity;
 import com.highway.study.ui.viewflipper.ViewFlipperTestActivity;
 import com.highway.study.ui.viewflipper.datepicker.DatePickerActivity;
+import com.highway.study.window.TestWindowActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -119,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 19:
                             intent = new Intent(MainActivity.this, BaseActivity.class);
+                            break;
+                        case 20:
+                            intent = new Intent(MainActivity.this, TestWindowActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

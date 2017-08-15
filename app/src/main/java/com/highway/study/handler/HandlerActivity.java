@@ -2,6 +2,7 @@ package com.highway.study.handler;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -10,6 +11,8 @@ import com.highway.study.R;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class HandlerActivity extends AppCompatActivity {
 
@@ -60,6 +63,33 @@ public class HandlerActivity extends AppCompatActivity {
      */
     private void createSingleThreadExecutor() {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
+    }
+
+    /**
+     * simple
+     */
+    private void useThreadPool() {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                SystemClock.sleep(2000);
+            }
+        };
+
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(4);
+        fixedThreadPool.execute(runnable);
+
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+        cachedThreadPool.execute(runnable);
+
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(4);
+        scheduledExecutorService.schedule(runnable, 2000, TimeUnit.MICROSECONDS); // 延迟2000ms执行
+
+        scheduledExecutorService.scheduleAtFixedRate(runnable, 0, 10, TimeUnit.SECONDS); // 延迟0ms，每隔10m执行一次
+
+        ExecutorService singeleThreadExecutor = Executors.newSingleThreadExecutor();
+        singeleThreadExecutor.execute(runnable);
+
     }
 
 }
