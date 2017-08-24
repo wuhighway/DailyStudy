@@ -16,7 +16,12 @@
     <com.highway.study.coustomview.loadingview.CoustomToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        />
+
+    <com.highway.study.coustomview.loadingview.MatchTechniqueView
+        android:id="@+id/teach"
+        android:layout_width="match_parent"
+        android:layout_height="32dp" />
 
     <!--<com.highway.study.coustomview.loadingview.BallSpinFadeLoadingView-->
         <!--android:id="@+id/loading_view"-->

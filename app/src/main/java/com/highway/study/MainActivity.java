@@ -1,29 +1,31 @@
 package com.highway.study;
 
-import android.app.ActionBar;
+import android.*;
+import android.Manifest;
 import android.content.Intent;
-import android.graphics.PixelFormat;
+import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.WindowManager;
-import android.widget.Button;
+import android.util.Log;
 
 import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.androidbase.BaseActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
-import com.highway.study.coordinatorLayout.CoordinatorLayoutActivity;
 import com.highway.study.coordinatorLayout.TextViewActivity;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
 import com.highway.study.customedittext.SecurityActivity;
 import com.highway.study.cutdowntimer.CountdownTimerActivity;
+import com.highway.study.getui.GetuiSdkDemoActivity;
 import com.highway.study.hardware.ShakeActivity;
 import com.highway.study.javaandh5.JavaAndH5Activity;
 import com.highway.study.keyboard.KeyBoardActivity;
 import com.highway.study.recyclerview.RecyclerViewActivity;
+import com.highway.study.remoteview.RemoteViewActivity;
 import com.highway.study.rxjava.RxJavaActivity;
 import com.highway.study.scanphotos.ScanImageviewActivity;
 import com.highway.study.service.ServiceActivity;
@@ -38,8 +40,10 @@ import com.highway.study.window.TestWindowActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     @Bind(R.id.recycler)
     RecyclerView recyclerView;
 
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setupRecyclerView();
+
     }
 
     private void setupRecyclerView() {
@@ -127,6 +132,12 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 20:
                             intent = new Intent(MainActivity.this, TestWindowActivity.class);
+                            break;
+                        case 21:
+                            intent = new Intent(MainActivity.this, RemoteViewActivity.class);
+                            break;
+                        case 22:
+                            intent = new Intent(MainActivity.this, GetuiSdkDemoActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);

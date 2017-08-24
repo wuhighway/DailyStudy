@@ -12,7 +12,7 @@ import android.util.Log;
 import java.io.IOException;
 
 public class MyService extends Service {
-    private static final String TAG = "MyService";
+    private static final String TAG = "GetuiPushService";
     private MediaRecorder recorder;
     @Override
     public void onCreate() {

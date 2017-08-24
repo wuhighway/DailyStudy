@@ -13,6 +13,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField 'String', 'APP_BASE_URL', '"www.baidu.com"'
+
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "Gr5b2R81MtA9RF6smBH8E9",
+                GETUI_APP_KEY   : "cUQBKAmjKqAdWEyKNUUYM9",
+                GETUI_APP_SECRET: "avJBMlYzGZ7lZeJATV0eI9"
+        ]
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86_64"
+        }
     }
 
     signingConfigs {
@@ -27,7 +37,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false // 是否启动混淆
+            minifyEnabled true // 是否启动混淆
             zipAlignEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //设置生成的apk文件的名字
@@ -43,17 +53,17 @@ android {
         }
     }
 
-    productFlavors {
-        "dev" {
-            applicationId "com.highway.study"
-            signingConfig signingConfigs.release
-        }
-
-        "devpro" {
-            applicationId "com.highway.study"
-            signingConfig signingConfigs.release
-        }
-    }
+//    productFlavors {
+//        "dev" {
+//            applicationId "com.highway.study"
+//            signingConfig signingConfigs.release
+//        }
+//
+//        "devpro" {
+//            applicationId "com.highway.study"
+//            signingConfig signingConfigs.release
+//        }
+//    }
 
     packagingOptions {
 
@@ -66,7 +76,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     //    compile 'com.github.chrisbanes:PhotoView:2.0.0'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:recyclerview-v7:25.3.0'
@@ -87,6 +96,8 @@ dependencies {
     compile 'com.google.zxing:core:3.3.0'
     compile 'com.jakewharton:disklrucache:2.0.2'
     testCompile 'junit:junit:4.12'
+    compile 'com.getui:sdk:2.10.2.0'
+    compile files('libs/json_simple-1.1.jar')
 }
 
 def releaseTime() {

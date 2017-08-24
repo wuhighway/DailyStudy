@@ -18,7 +18,7 @@ public class MyIntentService extends IntentService {
 
 
     public MyIntentService() {
-        super("MyIntentService");
+        super("GeTuiIntentService");
     }
 
     @Override
