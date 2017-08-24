@@ -21,7 +21,8 @@
     <com.highway.study.coustomview.loadingview.MatchTechniqueView
         android:id="@+id/teach"
         android:layout_width="match_parent"
-        android:layout_height="32dp" />
+        android:layout_height="32dp"
+        android:layout_centerInParent="true"/>
 
     <!--<com.highway.study.coustomview.loadingview.BallSpinFadeLoadingView-->
         <!--android:id="@+id/loading_view"-->

@@ -7,6 +7,7 @@ import com.highway.study.R;
 
 public class CoustomActivity extends AppCompatActivity {
 
+    MatchTechniqueView techniqueView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +34,11 @@ public class CoustomActivity extends AppCompatActivity {
 //        //设置进度
 //        loading.setProgress(50);
         //PS：作为一个这么高大上的自定义View，当然不会只有一个setProgress方法了，关于其他用法，请看后续的说明文档.
+        FootballTeamPkData pkData = new FootballTeamPkData();
+        pkData.setTitle("例子");
+        pkData.setHvalue("98");
+        pkData.setGvalue("102");
+        techniqueView = (MatchTechniqueView) findViewById(R.id.teach);
+        techniqueView.setTeachData(pkData);
     }
 }
