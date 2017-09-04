@@ -24,6 +24,8 @@
         <item>window</item>
         <item>remoteview</item>
         <item>个推</item>
+        <item>sensor</item>
+        <item>蓝牙</item>
     </string-array>
 
     <string-array name="animation_apis">
@@ -44,25 +46,18 @@
     <string name="time">\n发布时间:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
 
     <string name="no_clientid">(none)</string>
     <string name="start">已启动</string>
     <string name="clientid">clientid&#160;=&#160;</string>
     <string name="stop">已停止</string>
     <string name="clear">清除日志</string>
-    <string name="enablelog">开启debug日志</string>
-    <string name="bindcell">绑定手机号</string>
     <string name="pmsg">透传测试</string>
     <string name="psmsg">通知栏测试</string>
     <string name="transmit">透传内容</string>
     <string name="begin">开始(h)</string>
-    <string name="end">结束</string>
     <string name="duration">持续时间(h)</string>
-    <string name="set_heartbeat">心跳间隔(s)</string>
-    <string name="send_msg">发送消息</string>
     <string name="bind_alias">绑定别名</string>
     <string name="unbind_alias">解绑别名</string>
     <string name="add_tag">添加标签</string>
@@ -81,7 +76,6 @@
     <string name="getclientid">获取cid</string>
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
-    <string name="exit">退出</string>
     <string name="appid">appid&#160;=&#160;</string>
     <string name="appkey">appkey&#160;=&#160;</string>
     <string name="appsecret">appsecret&#160;=&#160;</string>

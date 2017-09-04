@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
+import java.util.UUID;
 
 /**
  * Created by JH
@@ -23,6 +24,7 @@ public class Utility {
 
     private static final String TAG = "Utility";
     private static Toast toast;
+    public static UUID uuid = UUID.fromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
     public static void showToast(Context context, String desc) {
         if (toast == null) {

@@ -16,6 +16,7 @@ import com.highway.study.Retrofit.RetrofitActivity;
 import com.highway.study.androidbase.BaseActivity;
 import com.highway.study.anim.AnimActivity;
 import com.highway.study.anim.DividerItemDecoration;
+import com.highway.study.bluetooth.BluetoothActivity;
 import com.highway.study.coordinatorLayout.TextViewActivity;
 import com.highway.study.coustomview.loadingview.CoustomActivity;
 import com.highway.study.customedittext.SecurityActivity;
@@ -28,6 +29,7 @@ import com.highway.study.recyclerview.RecyclerViewActivity;
 import com.highway.study.remoteview.RemoteViewActivity;
 import com.highway.study.rxjava.RxJavaActivity;
 import com.highway.study.scanphotos.ScanImageviewActivity;
+import com.highway.study.sensor.SensorActivity;
 import com.highway.study.service.ServiceActivity;
 import com.highway.study.shareelem.ShareTractionActivity;
 import com.highway.study.spannablestring.SpannableStringActivity;
@@ -138,6 +140,12 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case 22:
                             intent = new Intent(MainActivity.this, GetuiSdkDemoActivity.class);
+                            break;
+                        case 23:
+                            intent = new Intent(MainActivity.this, SensorActivity.class);
+                            break;
+                        case 24:
+                            intent = new Intent(MainActivity.this, BluetoothActivity.class);
                             break;
                     }
                     if (intent != null) startActivity(intent);
